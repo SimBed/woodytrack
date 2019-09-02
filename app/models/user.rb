@@ -45,7 +45,7 @@ class User < ApplicationRecord
     #update_attribute(:activated,    true)
     #update_attribute(:activated_at, Time.zone.now)
     #alternative to the above (which hits the database only once)
-    update_columns(activated: true, activated_at: true)
+    update_columns(activated: true, activated_at: Time.zone.now)
   end
 
   # Sends activation email.
