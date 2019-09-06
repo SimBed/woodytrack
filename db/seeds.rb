@@ -11,7 +11,7 @@ User.create!(name:  "Example2 User",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: false,
-             activated: false,
+             activated: true,
              activated_at: Time.zone.now)
 
 20.times do |n|
