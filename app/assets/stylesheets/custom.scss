@@ -4,6 +4,7 @@
 
 $gray-medium-light: #eaeaea;
  /*DPS added this as referred to below but not defined, so when directly copied over from tutorial, it errored*/
+$gray-lighter:  #d8d8d8;
 $gray-light:  #d8d8d8;
 $gray-darker:  #d8d8d8;
 $gray:  #d8d8d8;
@@ -155,6 +156,44 @@ aside {
 
 .gravatar_edit {
   margin-top: 15px;
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
 }
 
 /* forms */
