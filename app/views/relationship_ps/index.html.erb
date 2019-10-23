@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Problems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>GG</th>
+      <th>Setter</th>
+      <th>SG</th>
+      <th>HP</th>
+      <th>DoHP</th>
+      <th>FirstTry</th>
+      <th>Rating</th>
+      <th>Comment</th>
+      <th colspan="9"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @problems.each do |problem| %>
+    <% rel = problem.relationship_ps.find_by(user_id: current_user.id)%>
+      <tr>
+        <td><%= problem.name %></td>
+        <td><%= problem.givengrade %></td>
+        <td><%= problem.setter %></td>
+        <td><%= rel.suggestedgrade%></td>
+        <td><%= rel.highpoint%></td>
+        <td><%= rel.dohp%></td>
+        <td><%= rel.firsttry%></td>
+        <td><%= rel.rating%></td>
+        <td><%= rel.comment%></td>
+        
+        <td><%= link_to 'Show', problem %></td>
+        <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+        <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Problem', new_problem_path %>
+

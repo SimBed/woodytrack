@@ -44,6 +44,76 @@ User.create!(name:  "Kunal",
                activated_at: Time.zone.now)
 end
 
+#Problems
+Problem.create!(name: "Babycakes",
+             givengrade: "6c",
+             setter: "unknown")
+
+Problem.create!(name: "Excaliboy",
+             givengrade: "7a",
+             setter: "SimBed")
+             
+Problem.create!(name: "Chimpanzee",
+             givengrade: "6b+",
+             setter: "unknown")
+             
+#User-Problem Relations
+
+RelationshipP.create!(user_id: 1,
+                  problem_id: 1,
+                  suggestedgrade: "7a",
+                  highpoint: "CR34",
+                  dohp: "4/10/2019",
+                  firsttry: "1/10/2019",
+                  rating: 2,
+                  comment: "nice route")
+                
+RelationshipP.create!(user_id: 1,
+                  problem_id: 2,
+                  suggestedgrade: "7a",
+                  highpoint: "top",
+                  dohp: "",
+                  firsttry: "",
+                  rating: 3,
+                  comment: "a Harrow classic")
+                  
+RelationshipP.create!(user_id: 1,
+                  problem_id: 3,
+                  suggestedgrade: "6c+",
+                  highpoint: "top",
+                  dohp: "28/9/2019",
+                  firsttry: "12/4/2019",
+                  rating: 2,
+                  comment: "cross-through crux")
+                  
+RelationshipP.create!(user_id: 2,
+                  problem_id: 2,
+                  suggestedgrade: "6c+",
+                  highpoint: "top",
+                  dohp: "",
+                  firsttry: "",
+                  rating: 2,
+                  comment: "didn't match")
+                  
+RelationshipP.create!(user_id: 2,
+                  problem_id: 1,
+                  suggestedgrade: "7a",
+                  highpoint: "CR4",
+                  dohp: "",
+                  firsttry: "",
+                  rating: 3,
+                  comment: "crap route")
+                  
+RelationshipP.create!(user_id: 3,
+                  problem_id: 2,
+                  suggestedgrade: "7a+",
+                  highpoint: "TL1",
+                  dohp: "",
+                  firsttry: "",
+                  rating: 3,
+                  comment: "gaston crushed me")
+
+
 # Microposts
 #users = User.order(:created_at).take(6)
 #50.times do
