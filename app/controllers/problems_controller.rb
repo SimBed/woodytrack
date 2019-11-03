@@ -1,8 +1,10 @@
 class ProblemsController < ApplicationController
     before_action :set_problem, only: [:edit, :update, :destroy]
+    before_action :admin_user,     only: [:new, :edit, :update, :destroy]
   
   def index
-    @problems = Problem.all
+   # @problems = Problem.all.order(:givengrade, :name).paginate(page: params[:page],per_page: 10)
+    @problems = Problem.all.order(params[:sort], :name).paginate(page: params[:page],per_page: 10)
   end
   
   def new

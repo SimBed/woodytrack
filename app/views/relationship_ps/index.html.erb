@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Problems</h1>
+<h1>My Problems</h1>
 
 <table>
   <thead>
@@ -32,15 +32,11 @@
         <td><%= rel.rating%></td>
         <td><%= rel.comment%></td>
         
-        <td><%= link_to 'Show', problem %></td>
-        <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-        <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_relationship_p_path(rel) %></td>
+        <td><%= link_to 'Unfollow', rel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Problem', new_problem_path %>
 

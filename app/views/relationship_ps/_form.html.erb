@@ -1,0 +1,47 @@
+<%= form_with(model: relationship_ps, local: true) do |form| %>
+  <% if relationship_ps.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(relationship_ps.errors.count, "error") %> prohibited this problem from being saved:</h2>
+
+      <ul>
+      <% relationship_ps.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :suggestedgrade %>
+    <%= form.text_field :suggestedgrade %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :highpoint %>
+    <%= form.text_field :highpoint %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dohp %>
+    <%= form.text_field :dohp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :firsttry %>
+    <%= form.text_field :firsttry %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.text_field :rating %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update" %>
+  </div>
+<% end %>
