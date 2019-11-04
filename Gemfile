@@ -7,8 +7,8 @@ ruby '2.4.1'
 gem 'rails', '~> 5.2.1'
 gem 'bcrypt'
 gem 'faker'
-gem 'carrierwave',             '1.2.2'
-gem 'mini_magick',             '4.7.0'
+#gem 'carrierwave',             '1.2.2'
+#gem 'mini_magick',             '4.7.0'
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap'
@@ -35,7 +35,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'fog', '1.42'
+#  gem 'fog', '1.42'
 end
 
 group :test do

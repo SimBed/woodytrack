@@ -4,14 +4,9 @@ one:
   name: MyString
   string: MyString
   givengrade: MyString
-  string: MyString
-  setter: MyString
-  string: MyString
-
+ 
 two:
   name: MyString
   string: MyString
   givengrade: MyString
-  string: MyString
-  setter: MyString
-  string: MyString
+

@@ -10,7 +10,6 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get root_path
     assert_select 'div.pagination'
-    assert_select 'input[type="file"]'
     # Invalid submission
     assert_no_difference 'Micropost.count' do
       post microposts_path, params: { micropost: { content: "" } }
@@ -18,10 +17,8 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation'
     # Valid submission
     content = "This micropost really ties the room together"
-    picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
     assert_difference 'Micropost.count', 1 do
-      post microposts_path, params: { micropost: { content: content,
-                                                   picture: picture} }
+      post microposts_path, params: { micropost: { content: content} }
     end
     #assigns method as hinted to in exercise (lets us access @micropost in Micropost Controller's create action)
      micropost = assigns(:micropost)
