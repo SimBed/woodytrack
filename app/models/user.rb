@@ -8,6 +8,7 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  
   has_many :relationship_ps, dependent: :destroy
   has_many :problems, through: :relationship_ps
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -106,6 +107,21 @@ class User < ApplicationRecord
   # Returns true if the current user is following the other user.
   def following?(other_user)
     following.include?(other_user)
+  end
+  
+ # Follows a problem
+  def probfollow(prob)
+    problems << prob
+  end
+
+  # Unfollows a problem
+  def probunfollow(prob)
+    problems.delete(prob)
+  end
+
+  # Returns true if the current user is following the problem.
+  def probfollowing?(prob)
+    problems.include?(prob)
   end
 
   

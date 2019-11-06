@@ -1,0 +1,7 @@
+  <div id="follow_form">
+  <% if current_user.probfollowing?(problem) %>
+    <%= render 'unfollow', problem: problem %>
+  <% else %>
+    <%= render 'follow', problem: problem %>
+  <% end %>
+  </div>
