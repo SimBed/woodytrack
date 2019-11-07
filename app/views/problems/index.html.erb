@@ -1,3 +1,4 @@
+<% provide(:title, 'All problems') %>
 <p id="notice"><%= notice %></p>
 
 <h1>Problems</h1>
@@ -24,8 +25,8 @@
         <% if current_user.admin? %>
         <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
         <td><%= link_to 'Remove', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= render 'follow_form', problem: problem if logged_in? %></td>
         <% end %>
+        <td><%= render 'follow_form', problem: problem if logged_in? %></td>
            
          
       </tr>
