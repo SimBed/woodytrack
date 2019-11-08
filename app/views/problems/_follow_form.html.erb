@@ -1,7 +1,7 @@
-  <div id="follow_form">
+  <div id="follow_form" class= "text-center">
   <% if current_user.probfollowing?(problem) %>
     <%#= render 'unfollow', problem: problem %>
-        following
+      Yes
   <% else %>
     <%= render 'follow', problem: problem %>
   <% end %>

@@ -13,26 +13,23 @@ class RelationshipPsController < ApplicationController
   def edit
   end
 
-  # POST /problems
-  # POST /problems.json
-  def create
-    if params[:commit] == 'Follow'
-         @problem = Problem.find(params[:problem_id])
-    current_user.probfollow(@problem)
-    flash[:success] = "Problem followed!"
-            redirect_to problems_path
-    else
-   @relationship_ps = RelationshipP.new(rel_params)
-       if @relationship_ps.save
-        redirect_to relationship_ps_path
-        flash[:success] = "New problem followed! Edit from My Problems."
-       else
-       render :new 
-       end
-    end
- 
 
-  
+  def create
+    #2 ways to trigger create method - 1) through web when following user, 2) when seeding
+    if params[:commit] == 'Follow'
+      @problem = Problem.find(params[:problem_id])
+      current_user.probfollow(@problem)
+      redirect_to problems_path
+      flash[:success] = "New Problem Followed! Edit from My Problems."
+    else
+      @relationship_ps = RelationshipP.new(rel_params)
+      if @relationship_ps.save
+        redirect_to relationship_ps_path
+        flash[:success] = "New Problem Followed! Edit from My Problems."
+      else
+       render :new 
+      end
+    end
   end
   
   def update
