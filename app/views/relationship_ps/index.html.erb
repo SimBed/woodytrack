@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <p id="notice"><%= notice %></p>
 
 <h1>My Problems</h1>
@@ -38,5 +39,9 @@
     <% end %>
   </tbody>
 </table>
+
+<% else %>
+  <%= render 'static_pages/welcome' %>
+<% end %>
 
 

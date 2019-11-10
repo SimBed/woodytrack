@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   get 'password_resets/new'
   get 'password_resets/edit'
-  #root   'static_pages#home'
-  root 'relationship_ps#index'
+  root   'static_pages#home'
   get    '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'

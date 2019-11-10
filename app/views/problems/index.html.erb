@@ -1,7 +1,7 @@
 <% provide(:title, 'All problems') %>
 <p id="notice"><%= notice %></p>
 
-<h1>Problems</h1>
+<h1>All Problems</h1>
 
 <%= will_paginate %>
 
@@ -11,6 +11,10 @@
       <th><%= link_to "Name", :sort => "name" %></th>
       <th><%= link_to "GG", :sort => "givengrade" %></th>
       <th><%= link_to "Set", :sort => "setter" %></th>
+      <% if current_user.admin? %>
+        <th></th>
+        <th></th>
+        <% end %>
       <th>Following</th>
      </tr>
   </thead>

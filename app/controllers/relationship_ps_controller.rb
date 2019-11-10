@@ -3,7 +3,7 @@ class RelationshipPsController < ApplicationController
   ##  before_action :admin_user,     only: [:new, :edit, :update, :destroy]
 
   def index
-    @problems = current_user.problems
+    @problems = current_user.problems if logged_in?
   end
 
   def new
