@@ -8,9 +8,13 @@
 <table>
   <thead>
     <tr>
-      <th><%= link_to "Name", :sort => "name" %></th>
-      <th><%= link_to "GG", :sort => "givengrade" %></th>
-      <th><%= link_to "Set", :sort => "setter" %></th>
+      <!--th><%= link_to "Name", {:sort => "name"}, {title: 'Name', "data-toggle" => "tooltip"} %></th>
+      <th><%= link_to "Gg", {:sort => "givengrade"}, {title: 'Given Grade', "data-toggle" => "tooltip"} %></th>
+      <th><%= link_to "Setter", {:sort => "setter"}, {title: 'Set by', "data-toggle" => "tooltip"} %></th-->
+      <th><%= sortable "name", "Name", "Name"%></th>
+      <th><%= sortable "givengrade", "Grd", "Setter's Grade"%></th>
+      <th><%= sortable "setter", "Set", "Set by"%></th>
+      
       <% if current_user.admin? %>
         <th></th>
         <th></th>

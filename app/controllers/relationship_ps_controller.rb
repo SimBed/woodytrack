@@ -1,9 +1,13 @@
 class RelationshipPsController < ApplicationController
   before_action :set_rel, only: [:edit, :update, :destroy]
   ##  before_action :admin_user,     only: [:new, :edit, :update, :destroy]
+  
+  helper_method :sort_column, :sort_direction
 
   def index
-    @problems = current_user.problems if logged_in?
+  #@problems = current_user.problems if logged_in?
+  #@problems = current_user.problems.order(params[:sort], :name).paginate(page: params[:page],per_page: 10) if logged_in?
+   @problems = current_user.problems.order(sort_column + " " + sort_direction, :name).paginate(page: params[:page],per_page: 10) if logged_in?
   end
 
   def new
@@ -59,7 +63,15 @@ class RelationshipPsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def rel_params
       #params.require(:relationship_p).permit(:suggestedgrade, :highpoint, :dohp, :firsttry, :rating)
-       params.require(:relationship_p).permit(:user_id, :problem_id, :suggestedgrade, :highpoint, :dohp, :firsttry, :rating)
+       params.require(:relationship_p).permit(:user_id, :problem_id, :suggestedgrade, :highpoint, :dohp, :firsttry, :rating, :comment)
+    end
+    
+    def sort_column
+      params[:sort] || "name"
+    end
+    
+    def sort_direction
+      params[:direction] || "asc"
     end
     
 end

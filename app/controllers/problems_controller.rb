@@ -1,10 +1,12 @@
 class ProblemsController < ApplicationController
     before_action :set_problem, only: [:edit, :update, :destroy]
     before_action :admin_user,     only: [:new, :edit, :update, :destroy]
+    
+    helper_method :sort_column, :sort_direction
   
   def index
-   # @problems = Problem.all.order(:givengrade, :name).paginate(page: params[:page],per_page: 10)
-    @problems = Problem.all.order(params[:sort], :name).paginate(page: params[:page],per_page: 10)
+#    @problems = Problem.all.order(params[:sort], :name).paginate(page: params[:page],per_page: 10)
+     @problems = Problem.all.order(sort_column + " " + sort_direction, :name).paginate(page: params[:page],per_page: 10)
   end
   
   def new
@@ -53,4 +55,13 @@ class ProblemsController < ApplicationController
     def problem_params
       params.require(:problem).permit(:name, :givengrade, :setter)
     end
+
+    def sort_column
+      params[:sort] || "name"
+    end
+    
+    def sort_direction
+      params[:direction] || "asc"
+    end
+
 end

@@ -8,4 +8,10 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+  
+  def sortable(column, coltitle = nil, tooltiptitle = nil)
+      coltitle ||= column.titleize
+      direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+      link_to coltitle, {:sort => column, :direction => direction}, {title: tooltiptitle,"data-toggle" => "tooltip"}
+  end
 end

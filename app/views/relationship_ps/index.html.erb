@@ -6,19 +6,18 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>GG</th>
-      <th>Setter</th>
-      <th>SG</th>
-      <th>HP</th>
-      <th>DoHP</th>
-      <th>FirstTry</th>
-      <th>Rating</th>
+      <th><%= sortable "name", "Name", "Name"%></th>
+      <th><%= sortable "givengrade", "Grd", "Setter's Grade"%></th>
+      <th><%= sortable "setter", "Set", "Set by"%></th>
+      <th><%= sortable "suggestedgrade", "MyGrd", "My Grade"%></th>
+      <th title= 'High Point'>High</th>
+      <th title= 'Date High Point First Achieved'>DoHP</th>
+      <th title= 'Date of First Attempt'>1st Try</th>
+      <th><%= sortable "rating", "Rating", "Rating (0-3 star)"%></th>
       <th>Comment</th>
-      <th colspan="9"></th>
     </tr>
   </thead>
-
+  
   <tbody>
     <% @problems.each do |problem| %>
     <% rel = problem.relationship_ps.find_by(user_id: current_user.id)%>
