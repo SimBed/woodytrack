@@ -1,6 +1,6 @@
 <% if logged_in? %>
   <%#= render 'static_pages/post&feed' %>
-  get problems_path
+  <%controller.redirect_to problems_path %>
 <% else %>
   <%= render 'static_pages/welcome' %>
 <% end %>
