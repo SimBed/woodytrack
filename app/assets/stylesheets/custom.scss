@@ -6,7 +6,7 @@ $gray-medium-light: #eaeaea;
  /*DPS added this as referred to below but not defined, so when directly copied over from tutorial, it errored*/
 $gray-lighter:  #d8d8d8;
 $gray-light:  #d8d8d8;
-$gray-darker:  #d8d8d8;
+$gray-darker:  #808080;
 $gray:  #d8d8d8;
 
 /*taken from https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss
@@ -54,12 +54,12 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+/*  font-size: 1.2em; */
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
-  font-weight: normal;
-  /*color: $gray-light;*/
+ /* font-weight: normal;*/
+  color: $gray-darker;
 }
 
 p {
@@ -296,4 +296,40 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+/* Problems */
+
+.Problemtable td {
+   padding: 0 0.4vw 0 0.4vw;
+ }
+
+.Problemtable th{ 
+   padding: 0 0.4vw 0 0.4vw;
+   color: $gray;
+ }
+
+.Problemtable th .current{
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  color: $gray-darker
+ }
+ 
+.Problemtable th .notcurrent{
+   color: $gray-darker;
+ }
+ 
+.Problemtable th .asc { 
+/*background-image: url(/images/up_arrow.gif);*/
+background-image: image-url('up_arrow.gif'); 
+}
+
+.Problemtable th .desc { 
+/*background-image: url(/images/down_arrow.gif);*/
+background-image: image-url('down_arrow.gif'); 
+}
+
+.nav a{
+    color: $gray-darker
 }

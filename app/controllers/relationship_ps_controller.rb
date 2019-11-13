@@ -39,7 +39,7 @@ class RelationshipPsController < ApplicationController
   def update
       if @relationship_ps.update(rel_params)
         redirect_to relationship_ps_path
-        flash[:success] = "Problem updated"
+        flash[:success] = "#{@probname} updated"
       else
         render :edit
       end
@@ -50,7 +50,7 @@ class RelationshipPsController < ApplicationController
     #current_user.unfollow(@user)
     
     @relationship_ps.destroy
-    flash[:success] = "Problem no longer followed"
+    flash[:success] = "#{@probname} no longer followed"
     redirect_to relationship_ps_path
   end
 
@@ -58,6 +58,8 @@ class RelationshipPsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_rel
       @relationship_ps = RelationshipP.find(params[:id])
+      #so name can be included in flash messages
+      @probname = Problem.find_by(id: @relationship_ps.problem_id).name
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -66,12 +68,16 @@ class RelationshipPsController < ApplicationController
        params.require(:relationship_p).permit(:user_id, :problem_id, :suggestedgrade, :highpoint, :dohp, :firsttry, :rating, :comment)
     end
     
+
     def sort_column
-      params[:sort] || "name"
+      #params[:sort] || "name"
+      (RelationshipP.column_names+Problem.column_names).include?(params[:sort]) ? params[:sort] : "name"
     end
     
     def sort_direction
-      params[:direction] || "asc"
+      #params[:direction] || "asc"
+      #additional code provides robust sanitisation of what goes into the order clause
+      %w[asc desc].include?(params[:direction]) ? params[:direction]  : "asc"
     end
     
 end

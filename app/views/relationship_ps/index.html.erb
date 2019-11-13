@@ -1,9 +1,9 @@
 <% if logged_in? %>
 <p id="notice"><%= notice %></p>
 
-<h1>My Problems</h1>
+<h2>My Problems</h2>
 
-<table>
+<table class ="Problemtable">
   <thead>
     <tr>
       <th><%= sortable "name", "Name", "Name"%></th>
@@ -33,7 +33,7 @@
         <td><%= rel.comment%></td>
         
         <td><%= link_to 'Edit', edit_relationship_p_path(rel) %></td>
-        <td><%= link_to 'Unfollow', rel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Unfollow', rel, method: :delete, data: { confirm: "Are you sure? Your personal data for #{problem.name} will be lost." } %></td>
       </tr>
     <% end %>
   </tbody>

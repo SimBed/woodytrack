@@ -57,11 +57,14 @@ class ProblemsController < ApplicationController
     end
 
     def sort_column
-      params[:sort] || "name"
+      #params[:sort] || "name"
+      Problem.column_names.include?(params[:sort]) ? params[:sort] : "name"
     end
     
     def sort_direction
-      params[:direction] || "asc"
+      #params[:direction] || "asc"
+      #additional code provides robust sanitisation of what goes into the order clause
+      %w[asc desc].include?(params[:direction]) ? params[:direction]  : "asc"
     end
 
 end

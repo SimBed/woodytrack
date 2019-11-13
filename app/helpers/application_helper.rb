@@ -11,8 +11,9 @@ module ApplicationHelper
   
   def sortable(column, coltitle = nil, tooltiptitle = nil)
       coltitle ||= column.titleize
+      css_class = column == sort_column ? "current #{sort_direction}" : "notcurrent"
       direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-      link_to coltitle, {:sort => column, :direction => direction}, {title: tooltiptitle,"data-toggle" => "tooltip"}
+      link_to coltitle, {:sort => column, :direction => direction}, {title: tooltiptitle,"data-toggle" => "tooltip", class: css_class}
   end
   
    # Returns a shortened date format for easier reading in list
