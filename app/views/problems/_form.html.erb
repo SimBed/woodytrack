@@ -18,14 +18,15 @@
 
   <div class="field">
     <%= form.label :givengrade, 'Given Grade' %>
-    <%= form.text_field :givengrade %>
+    <%= form.select :givengrade, Rails.configuration.x.grades.options%>
+    <%#= form.text_field :givengrade %>
   </div>
 
   <div class="field">
     <%= form.label :setter %>
     <%= form.text_field :setter %>
   </div>
-
+  
   <div class="actions">
     <%= form.submit %>
   </div>

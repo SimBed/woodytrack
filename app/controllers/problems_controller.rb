@@ -24,7 +24,7 @@ class ProblemsController < ApplicationController
 
       if @problem.save
         redirect_to problems_path
-        flash[:success] = "New problem added!"
+        flash[:success] = "New problem, #{@problem.name} added!"
       else
        render :new 
       end
@@ -33,7 +33,7 @@ class ProblemsController < ApplicationController
   def update
       if @problem.update(problem_params)
         redirect_to problems_path
-        flash[:success] = "Problem updated"
+        flash[:success] = "#{@problem.name} updated"
       else
         render :edit
       end
@@ -41,7 +41,7 @@ class ProblemsController < ApplicationController
   
   def destroy
     @problem.destroy
-    flash[:success] = "Problem deleted"
+    flash[:success] = "#{@problem.name} deleted"
     redirect_to problems_path
   end
 

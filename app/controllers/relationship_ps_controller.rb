@@ -24,7 +24,7 @@ class RelationshipPsController < ApplicationController
       @problem = Problem.find(params[:problem_id])
       current_user.probfollow(@problem)
       redirect_to problems_path
-      flash[:success] = "New Problem Followed! Edit from My Problems."
+      flash[:success] = "#{@problem.name} now followed! Edit from My Problems."
     else
       @relationship_ps = RelationshipP.new(rel_params)
       if @relationship_ps.save
