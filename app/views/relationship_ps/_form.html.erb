@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :suggestedgrade, "My Grade"  %>
-    <%= form.select :suggestedgrade, Rails.configuration.x.grades.options%>
+    <%= form.select :suggestedgrade,Rails.application.config_for(:climbinginfo)["grades"]%>
     <!--%= form.text_field :suggestedgrade %-->
   </div>
   
@@ -34,7 +34,7 @@
   
   <div class="field">
     <%= form.label :rating, "Rating (0-3 star)" %>
-    <%= form.text_field :rating %>
+    <%= form.select :rating, Rails.application.config_for(:climbinginfo)["ratings"] %>
   </div>
   
   <div class="field">
