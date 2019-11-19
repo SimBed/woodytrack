@@ -17,13 +17,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :givengrade, 'Given Grade' %>
+    <%= form.label :givengrade, "Setter's Grade" %>
     <%= form.select :givengrade, Rails.configuration.x.grades.options%>
     <%#= form.text_field :givengrade %>
   </div>
 
   <div class="field">
-    <%= form.label :setter %>
+    <%= form.label :setter, "Set by" %>
     <%= form.text_field :setter %>
   </div>
   

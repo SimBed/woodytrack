@@ -12,27 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :suggestedgrade %>
-    <%= form.text_field :suggestedgrade %>
+    <%= form.label :suggestedgrade, "My Grade"  %>
+    <%= form.select :suggestedgrade, Rails.configuration.x.grades.options%>
+    <!--%= form.text_field :suggestedgrade %-->
   </div>
   
   <div class="field">
-    <%= form.label :highpoint %>
+    <%= form.label :highpoint,'High Point' %>
     <%= form.text_field :highpoint %>
   </div>
 
   <div class="field">
-    <%= form.label :dohp %>
+    <%= form.label :dohp, 'Date High Point First Achieved' %>
     <%= form.text_field :dohp %>
   </div>
 
   <div class="field">
-    <%= form.label :firsttry %>
+    <%= form.label :firsttry, 'Date of First Attempt' %>
     <%= form.text_field :firsttry %>
   </div>
   
   <div class="field">
-    <%= form.label :rating %>
+    <%= form.label :rating, "Rating (0-3 star)" %>
     <%= form.text_field :rating %>
   </div>
   
