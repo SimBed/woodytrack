@@ -18,7 +18,8 @@
 
   <div class="field">
     <%= form.label :givengrade, "Setter's Grade" %>
-    <%= form.select :givengrade, Rails.configuration.x.grades.options%>
+    <!--see config/climbinginfo.yml-->
+    <%= form.select :givengrade, Rails.application.config_for(:climbinginfo)["grades"]%>
     <%#= form.text_field :givengrade %>
   </div>
 
