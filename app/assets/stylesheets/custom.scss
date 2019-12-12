@@ -23,27 +23,23 @@ $state-danger-text: #a94442 !default;
 
 body {
   padding-top: 60px;
-  /*DPS 'mobile first' addition*/
+  /*DPS 'mobile first'*/
   font-size: 2rem;
 }
 
-/* @media (min-width: 768px) {
-	body {
-    font-size: 1rem;
-	}
- }*/
- @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-  html {
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-    overflow-x: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
-  }
+/*DPS mobile first*/
+.container {
+    padding-right: 1px;
+    padding-left: 1px;
 }
 
+@media (min-width: 992px) {
+	body {
+    font-size: 1rem;
+    padding-right: 15px;
+    padding-left: 15px;
+	}
+ }
 
 section {
   overflow: auto;
