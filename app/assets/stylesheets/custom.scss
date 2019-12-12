@@ -23,7 +23,16 @@ $state-danger-text: #a94442 !default;
 
 body {
   padding-top: 60px;
+  /*DPS 'mobile first' addition*/
+  font-size: 1.2rem;
 }
+
+ @media (min-width: 768px) {
+	body {
+    font-size: 1rem;
+	}
+ }
+
 
 section {
   overflow: auto;
