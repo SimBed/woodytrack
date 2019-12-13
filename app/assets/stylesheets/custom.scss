@@ -24,14 +24,14 @@ $state-danger-text: #a94442 !default;
 body {
   padding-top: 60px;
   /*DPS 'mobile first'*/
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 
 /*DPS mobile first*/
 .container {
     padding-right: 0;
     padding-left: 0;
-    max-width: 100%;
+    max-width: 99%;
 }
 
 @media (min-width: 992px) {
