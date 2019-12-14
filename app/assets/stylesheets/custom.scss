@@ -320,10 +320,16 @@ span.picture {
 .Problemtable td {
    padding: 0 0.4vw 0 0.4vw;
  }
+ 
+ .Problemtable th a {
+	 border-bottom: 1px dashed #999;
+  text-decoration: none
+}
+
 
 .Problemtable th{ 
    padding: 0 0.4vw 0 0.4vw;
-   color: $gray;
+   color: $gray-darker;
  }
 
 .Problemtable th .current{
@@ -350,3 +356,67 @@ background-image: image-url('down_arrow.gif');
 .nav a{
     color: $gray-darker
 }
+
+.listgroup-table {
+   display:block;
+   padding-left: 0;
+	 margin-top: 1rem;
+  font-size: 80%;
+}
+
+ .listitem-table {
+  position: relative;
+  display: block;
+  font-size: 90%;
+    }
+	
+	@media (min-width: 576px) {
+		
+	.listgroup-table {
+
+	}
+	.listitem-table{
+
+  }
+}
+
+.Circle {
+  display:inline-block;
+  border-radius: 50%;
+  width:10px;
+  height:10px;
+ }
+ 
+ .Grey {
+  background-color: #707070;
+  color: #dddddd;
+ }
+ 
+ .Lightgrey {
+  background-color: #d8d8d8;
+  color: #dddddd;
+ }
+
+.nav li a {
+	font-size: 2.0rem;
+}
+
+.btn { 
+	font-size: 1.5rem;
+}
+
+@media (min-width: 992px) {
+  body {
+    font-size: 1rem;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+.nav li a {
+	font-size: 1.0rem;
+}
+.btn { 
+	font-size: 1.0rem;
+}
+}
+
+
