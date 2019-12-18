@@ -31,8 +31,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
-  host = 'https://93ce19a2e84b4cdb884784408259a84e.vfs.cloud9.eu-west-1.amazonaws.com/' 
+  host = 'https://cf7599b824e24aa09efed3e203ce2b93.vfs.cloud9.eu-west-1.amazonaws.com/'
   # Don't use this literally; use your local dev host instead
   # Use this on the cloud IDE.
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }

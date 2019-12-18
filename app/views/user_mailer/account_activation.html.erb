@@ -1,9 +1,9 @@
-<h1>Wack</h1>
+<h2>Welcome to Wack!</h2>
 
-<p>Hi <%= @user.name %>,</p>
+<p>Hi <%= @user.name %></p>
 
 <p>
-Welcome to Wack! Click on the link below to activate your account:
+Click on the link below to activate your account:
 </p>
 
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
