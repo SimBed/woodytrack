@@ -3,6 +3,9 @@
 
 <h2>My Problems</h2>
 
+<!--The default @relationship_ps variable is empty..need to specify the variable explicitly here-->
+<%= will_paginate @problems %>
+
 <table class ="Problemtable">
   <thead>
     <tr>
@@ -11,8 +14,8 @@
       <th><%= sortable "setter", "Set", "Set by"%></th>
       <th><%= sortable "suggestedgrade", "MyGrd", "My Grade"%></th>
       <th title= 'High Point'>High</th>
-      <th title= 'Date High Point First Achieved'>DoHP</th>
-      <th title= 'Date of First Attempt'>1st Try</th>
+      <th><%= sortable "dohp", "DoHP", "Date High Point First Achieved"%></th>
+      <th><%= sortable "firsttry", "1st Try", "Date of First Attempt"%></th>
       <th><%= sortable "rating", "Rating", "Rating (0-3 star)"%></th>
       <th>Comment</th>
     </tr>
