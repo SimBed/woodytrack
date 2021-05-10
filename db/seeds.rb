@@ -132,7 +132,7 @@ User.find(3).microposts.create!(content: content)
 
 users = User.order(:created_at).drop(3)
 5.times do
-  content = Faker::Lorem.sentence(5)
+  content = Faker::Lorem.sentence(word_count: 5)
   users.each { |user| user.microposts.create!(content: content) }
 end
 

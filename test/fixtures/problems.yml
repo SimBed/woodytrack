@@ -2,11 +2,10 @@
 
 one:
   name: MyString
-  string: MyString
-  givengrade: MyString
- 
-two:
-  name: MyString
-  string: MyString
+  setter: MyString
   givengrade: MyString
 
+two:
+  name: MyString
+  setter: MyString
+  givengrade: MyString

@@ -3,10 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
-
 gem 'rails', '~> 5.2.1'
 gem 'bcrypt'
 gem 'faker'
+# RuboCop Faker is a tool for converting your Faker's methods to the latest Faker argument style with static code analysis.
+gem 'rubocop-faker'
 #gem 'carrierwave',             '1.2.2'
 #gem 'mini_magick',             '4.7.0'
 gem 'will_paginate',           '3.1.7'
