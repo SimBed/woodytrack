@@ -16,7 +16,7 @@
       <th><%= sortable "givengrade", "Grd", "Setter's Grade"%></th>
       <th><%= sortable "setter", "Set", "Set by"%></th>
       
-      <% if current_user.admin? %>
+      <% if current_user && current_user.admin? %>
         <th></th>
         <th></th>
         <% end %>
@@ -30,14 +30,14 @@
         <td><%= problem.name %></td>
         <td><%= problem.givengrade %></td>
         <td><%= problem.setter %></td>
-        
-        <% if current_user.admin? %>
+
+        <% if current_user && current_user.admin? %>
         <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
         <td><%= link_to 'Remove', problem, method: :delete, data: { confirm: "Are you sure? All climbers' data for #{problem.name} will be lost." } %></td>
         <% end %>
         <td><%= render 'follow_form', problem: problem if logged_in? %></td>
-           
-         
+
+
       </tr>
     <% end %>
 
@@ -46,10 +46,10 @@
     <ul class="listgroup-table pl-0">
     		<em>click underlined headings to sort:</em>
     		  <li class="listitem-table"><div class="Grey Circle"></div> Grd = Setter's Grade</li>
-    		  <li class="listitem-table"><div class="Grey Circle"></div> Set = Set by</li> 
+    		  <li class="listitem-table"><div class="Grey Circle"></div> Set = Set by</li>
     </ul>
 
-<% if current_user.admin? %>
+<% if current_user && current_user.admin? %>
 <br>
 <%= link_to 'New Problem', new_problem_path %>
 <% end %>
