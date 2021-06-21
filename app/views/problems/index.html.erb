@@ -3,39 +3,54 @@
 
 <h2>All Problems</h2>
 
+<% if current_user && current_user.admin? %>
+<%= link_to 'New Problem', new_problem_path %>
+<% end %>
+
 <%= will_paginate %>
 
 <table class ="Problemtable">
 
   <thead>
     <tr>
-      <!--th><%= link_to "Name", {:sort => "name"}, {title: 'Name', "data-toggle" => "tooltip"} %></th>
-      <th><%= link_to "Gg", {:sort => "givengrade"}, {title: 'Given Grade', "data-toggle" => "tooltip"} %></th>
-      <th><%= link_to "Setter", {:sort => "setter"}, {title: 'Set by', "data-toggle" => "tooltip"} %></th-->
       <th><%= sortable "name", "Name", "Name"%></th>
       <th><%= sortable "givengrade", "Grd", "Setter's Grade"%></th>
       <th><%= sortable "setter", "Set", "Set by"%></th>
-      
+      <% if current_user %>
+        <th>Status</th>
+        <th>My Grade</th>
+        <th>My Rating</th>
+      <% end %>
+
       <% if current_user && current_user.admin? %>
         <th></th>
         <th></th>
         <% end %>
-      <th>Following</th>
+      <!--th>Following</th-->
      </tr>
   </thead>
 
   <tbody>
     <% @problems.each do |problem| %>
       <tr>
-        <td><%= problem.name %></td>
+        <td><%= link_to problem.name, problem %></td>
         <td><%= problem.givengrade %></td>
         <td><%= problem.setter %></td>
-
+        <% if current_user %>
+          <td><%= problem.status(current_user) %></td>
+          <td><%= problem.rel(current_user)&.suggestedgrade %></td>
+          <td><%= problem.rel(current_user)&.rating %></td>
+          <% if problem.rel(current_user).nil? %>
+          <td><%= link_to 'Climb', new_rel_user_problem_path(:problem_id => problem.id) %></td>
+          <% else %>
+          <td><%= link_to 'ReClimb', edit_rel_user_problem_path(problem.rel(current_user)) %></td>
+          <% end %>
+        <% end %>
         <% if current_user && current_user.admin? %>
         <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
         <td><%= link_to 'Remove', problem, method: :delete, data: { confirm: "Are you sure? All climbers' data for #{problem.name} will be lost." } %></td>
         <% end %>
-        <td><%= render 'follow_form', problem: problem if logged_in? %></td>
+        <!--td><%#= render 'follow_form', problem: problem if logged_in? %></td-->
 
 
       </tr>
@@ -48,8 +63,3 @@
     		  <li class="listitem-table"><div class="Grey Circle"></div> Grd = Setter's Grade</li>
     		  <li class="listitem-table"><div class="Grey Circle"></div> Set = Set by</li>
     </ul>
-
-<% if current_user && current_user.admin? %>
-<br>
-<%= link_to 'New Problem', new_problem_path %>
-<% end %>

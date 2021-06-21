@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_071648) do
+ActiveRecord::Schema.define(version: 2021_06_18_095318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_10_09_071648) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "relationship_ps", force: :cascade do |t|
+  create_table "rel_user_problems", force: :cascade do |t|
     t.integer "user_id"
     t.integer "problem_id"
     t.string "suggestedgrade"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 2019_10_09_071648) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["problem_id"], name: "index_relationship_ps_on_problem_id"
-    t.index ["user_id", "problem_id"], name: "index_relationship_ps_on_user_id_and_problem_id", unique: true
-    t.index ["user_id"], name: "index_relationship_ps_on_user_id"
+    t.index ["problem_id"], name: "index_rel_user_problems_on_problem_id"
+    t.index ["user_id", "problem_id"], name: "index_rel_user_problems_on_user_id_and_problem_id", unique: true
+    t.index ["user_id"], name: "index_rel_user_problems_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

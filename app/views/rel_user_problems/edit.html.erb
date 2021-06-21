@@ -1,0 +1,5 @@
+<h2>Editing  <%=@rel_user_problem .problem.name%>, <%=@rel_user_problem.problem.givengrade%> </h2>
+
+<%= render 'form', rel_user_problem: @rel_user_problem %>
+
+<%= link_to 'Back', problems_path %>

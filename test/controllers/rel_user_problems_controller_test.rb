@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RelationshipPTest < ActiveSupport::TestCase
+class RelUserProblemsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

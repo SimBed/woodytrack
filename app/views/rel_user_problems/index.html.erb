@@ -3,7 +3,7 @@
 
 <h2>My Problems</h2>
 
-<!--The default @relationship_ps variable is empty..need to specify the variable explicitly here-->
+<!--The default @rel_user_problems variable is empty..need to specify the variable explicitly here-->
 <%= will_paginate @problems %>
 
 <table class ="Problemtable">
@@ -23,7 +23,7 @@
   
   <tbody>
     <% @problems.each do |problem| %>
-    <% rel = problem.relationship_ps.find_by(user_id: current_user.id)%>
+    <% rel = problem.rel_user_problems.find_by(user_id: current_user.id)%>
       <tr>
         <td><%= problem.name %></td>
         <td><%= problem.givengrade %></td>
@@ -35,7 +35,7 @@
         <td><%= rel.rating%></td>
         <td><%= rel.comment%></td>
         
-        <td><%= link_to 'Edit', edit_relationship_p_path(rel) %></td>
+        <td><%= link_to 'Edit', edit_rel_user_problem_path(rel) %></td>
         <td><%= link_to 'Unfollow', rel, method: :delete, data: { confirm: "Are you sure? Your personal data for #{problem.name} will be lost." } %></td>
       </tr>
     <% end %>

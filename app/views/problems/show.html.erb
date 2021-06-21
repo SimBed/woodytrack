@@ -1,0 +1,64 @@
+<p>
+  <!--strong><%#= @problem.name %></strong-->
+
+  <select id="show_pages">
+    <!-- https://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-options_for_select-->
+    <!-- value, option text, selected -->
+    <!-- [["SimKann", 1, {"data-showurl"=>"http://localhost:3000/leagues/1"}],
+         ["MonNight", 2, {"data-showurl"=>"http://localhost:3000/leagues/2"}]],
+         1 -->
+    <%= options_for_select(@problems, params[:id]) %>
+  </select>
+
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th class="pr-3 pr-md-5">Setter's Grade</th>
+      <th class="pr-3 pr-md-5">Set by</th>
+      <th class="pr-3 pr-md-5">My Grade</th>
+      <th class="pr-3 pr-md-5">High</th>
+      <th class="pr-3 pr-md-5">Date High Point First Achieved</th>
+      <th class="pr-3 pr-md-5">Date of First Attempt</th>
+      <th class="pr-3 pr-md-5">Rating (0-3 star)</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @problem.givengrade %></td>
+        <td><%= @problem.setter %></td>
+        <% if current_user %>
+        <td><%= @rel_user_problem&.suggestedgrade || 'n/a' %></td>
+        <td><%= @rel_user_problem&.highpoint || 'n/a' %></td>
+        <td><%= @rel_user_problem&.dohp || 'n/a' %></td>
+        <td><%= @rel_user_problem&.firsttry || 'n/a' %></td>
+        <td><%= @rel_user_problem&.rating || 'n/a' %></td>
+        <% end %>
+      </tr>
+  </tbody>
+</table>
+
+<% if !@rel_user_problem.nil? %>
+  <%= link_to 'Edit My Climb', edit_rel_user_problem_path(@rel_user_problem) %>
+<% end %>
+
+<% if current_user && current_user.admin? %>
+  <%= link_to 'Edit Problem', edit_problem_path(@problem) %>
+<% end %>
+
+<%= link_to 'Back', problems_path %>
+
+<script>
+	var userSelection = document.getElementById("show_pages");
+
+  userSelection.onchange = function(event){
+    var show_url = event.target.options[event.target.selectedIndex].dataset.showurl;
+    //var option = userSelection.options[userSelection.selectedIndex];
+    //var show_url = option.getAttribute("data-rc");
+    window.location.replace(show_url);
+  };
+
+</script>

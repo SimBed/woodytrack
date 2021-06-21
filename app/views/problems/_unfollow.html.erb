@@ -1,4 +1,4 @@
-<%= form_for(current_user.relationship_ps.find_by(problem_id: problem.id),
+<%= form_for(current_user.rel_user_problems.find_by(problem_id: problem.id),
              html: { method: :delete },
              remote: true) do |f| %>
   <%= f.submit "Unfollow", class: "btn mb-0" %>

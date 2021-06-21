@@ -1,10 +1,10 @@
-<%= form_with(model: relationship_ps, local: true) do |form| %>
-  <% if relationship_ps.errors.any? %>
+<%= form_with(model: @rel_user_problem, local: true) do |form| %>
+  <% if rel_user_problem.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(relationship_ps.errors.count, "error") %> prohibited this problem from being saved:</h2>
+      <h2><%= pluralize(rel_user_problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
 
       <ul>
-      <% relationship_ps.errors.full_messages.each do |message| %>
+      <% rel_user_problem.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -16,7 +16,7 @@
     <%= form.select :suggestedgrade,Rails.application.config_for(:climbinginfo)["grades"]%>
     <!--%= form.text_field :suggestedgrade %-->
   </div>
-  
+
   <div class="field">
     <%= form.label :highpoint,'High Point' %>
     <%= form.text_field :highpoint %>
@@ -31,12 +31,12 @@
     <%= form.label :firsttry, 'Date of First Attempt' %>
     <%= form.date_field :firsttry %>
   </div>
-  
+
   <div class="field">
     <%= form.label :rating, "Rating (0-3 star)" %>
     <%= form.select :rating, Rails.application.config_for(:climbinginfo)["ratings"] %>
   </div>
-  
+
   <div class="field">
     <%= form.label :comment %>
     <%= form.text_field :comment %>

@@ -1,4 +1,4 @@
-class RelationshipP < ApplicationRecord
+class RelUserProblem < ApplicationRecord
   belongs_to :user
   belongs_to :problem
 end

@@ -6,31 +6,23 @@ User.create!(name:  "Dan SimBed",
              admin:     true,
              activated: true,
              activated_at: Time.zone.now)
-             
-User.create!(name:  "Namrata",
-             email: "namrata@thespacejuhu.in",
+
+User.create!(name:  "Amala",
+             email: "amala@thespacejuhu.in",
              password:              "foobar",
              password_confirmation: "foobar",
              admin:     false,
              activated: true,
              activated_at: Time.zone.now)
-             
-User.create!(name:  "Tosh",
-             email: "tosh@thespacejuhu.in",
+
+User.create!(name:  "Aadrak",
+             email: "aadrak@thespacejuhu.in",
              password:              "foobar",
              password_confirmation: "foobar",
              admin:     false,
              activated: true,
              activated_at: Time.zone.now)
-             
-User.create!(name:  "Kunal",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             admin:     false,
-             activated: true,
-             activated_at: Time.zone.now)
-             
+
 
 5.times do |n|
   name  = Faker::Name.name
@@ -52,14 +44,51 @@ Problem.create!(name: "Babycakes",
 Problem.create!(name: "Excaliboy",
              givengrade: "7a",
              setter: "SimBed")
-             
+
 Problem.create!(name: "Chimpanzee",
              givengrade: "6b+",
              setter: "unknown")
-             
+
+ 3.times do |n|
+   # keep characters below validation maximum
+   name  = Faker::Book.title[0, 25]
+   givengrade = %w[6a 6b 6c 7a 7b 7c 8a 8b 8c].sample
+   setter = "unknown"
+   Problem.create!(name: name,
+                givengrade: givengrade,
+                setter:setter)
+ end
+
+ 3.times do |n|
+   name = Faker::Movies::LordOfTheRings.character[0, 25]
+   givengrade = %w[6a 6b 6c 7a 7b 7c 8a 8b 8c].sample
+   setter = "unknown"
+   Problem.create!(name: name,
+                givengrade: givengrade,
+                setter:setter)
+ end
+
+ 3.times do |n|
+   name = Faker::Movies::LordOfTheRings.location[0, 25]
+   givengrade = %w[6a 6b 6c 7a 7b 7c 8a 8b 8c].sample
+   setter = "unknown"
+   Problem.create!(name: name,
+                givengrade: givengrade,
+                setter:setter)
+ end
+
+ 3.times do |n|
+   name = Faker::Games::WarhammerFantasy.hero[0, 25]
+   givengrade = %w[6a 6b 6c 7a 7b 7c 8a 8b 8c].sample
+   setter = "unknown"
+   Problem.create!(name: name,
+                givengrade: givengrade,
+                setter:setter)
+ end
+
 #User-Problem Relations
 
-RelationshipP.create!(user_id: 1,
+RelUserProblem.create!(user_id: 1,
                   problem_id: 1,
                   suggestedgrade: "7a",
                   highpoint: "CR34",
@@ -67,8 +96,8 @@ RelationshipP.create!(user_id: 1,
                   firsttry: "1/10/2019",
                   rating: 2,
                   comment: "nice route")
-                
-RelationshipP.create!(user_id: 1,
+
+RelUserProblem.create!(user_id: 1,
                   problem_id: 2,
                   suggestedgrade: "7a",
                   highpoint: "top",
@@ -76,8 +105,8 @@ RelationshipP.create!(user_id: 1,
                   firsttry: "",
                   rating: 3,
                   comment: "a Harrow classic")
-                  
-RelationshipP.create!(user_id: 1,
+
+RelUserProblem.create!(user_id: 1,
                   problem_id: 3,
                   suggestedgrade: "6c+",
                   highpoint: "top",
@@ -85,8 +114,8 @@ RelationshipP.create!(user_id: 1,
                   firsttry: "12/4/2019",
                   rating: 2,
                   comment: "cross-through crux")
-                  
-RelationshipP.create!(user_id: 2,
+
+RelUserProblem.create!(user_id: 2,
                   problem_id: 2,
                   suggestedgrade: "6c+",
                   highpoint: "top",
@@ -94,8 +123,8 @@ RelationshipP.create!(user_id: 2,
                   firsttry: "",
                   rating: 2,
                   comment: "didn't match")
-                  
-RelationshipP.create!(user_id: 2,
+
+RelUserProblem.create!(user_id: 2,
                   problem_id: 1,
                   suggestedgrade: "7a",
                   highpoint: "CR4",
@@ -103,8 +132,8 @@ RelationshipP.create!(user_id: 2,
                   firsttry: "",
                   rating: 3,
                   comment: "crap route")
-                  
-RelationshipP.create!(user_id: 3,
+
+RelUserProblem.create!(user_id: 3,
                   problem_id: 2,
                   suggestedgrade: "7a+",
                   highpoint: "TL1",

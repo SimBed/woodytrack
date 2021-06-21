@@ -10,7 +10,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_template 'static_pages/home'
     assert_select 'a[href=?]', root_path, count: 0
     assert_select 'a[href=?]', problems_path, count: 0
-    assert_select 'a[href=?]', relationship_ps_path, count: 0
+    assert_select 'a[href=?]', rel_user_problems_path, count: 0
     assert_select 'a[href=?]', users_path, count: 0
     assert_select 'a[href=?]', logout_path, count: 0
     assert_select 'a[href=?]', login_path
@@ -25,7 +25,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_template 'static_pages/home'
     assert_select 'a[href=?]', root_path, count: 0
     assert_select 'a[href=?]', problems_path
-    assert_select 'a[href=?]', relationship_ps_path
+    assert_select 'a[href=?]', rel_user_problems_path
     assert_select 'a[href=?]', users_path, count: 0
     assert_select 'a[href=?]', logout_path
     assert_select 'a[href=?]', login_path, count: 0
