@@ -8,7 +8,7 @@ class RelUserProblemsController < ApplicationController
     return unless logged_in?
 
     @problems = current_user.problems.order("#{sort_column} #{sort_direction}", :name).paginate(page: params[:page],
-                                                                                                per_page: 10)
+                                                                                                per_page: 20)
   end
 
   def new

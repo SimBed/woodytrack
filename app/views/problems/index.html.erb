@@ -7,6 +7,7 @@
 <%= link_to 'New Problem', new_problem_path %>
 <% end %>
 
+<div class="container px-1 mb-0">
 <%= will_paginate %>
 
 <table class ="Problemtable">
@@ -15,7 +16,7 @@
     <tr>
       <th><%= sortable "name", "Name", "Name"%></th>
       <th><%= sortable "givengrade", "Grd", "Setter's Grade"%></th>
-      <th><%= sortable "setter", "Set", "Set by"%></th>
+      <th class="nomobile"><%= sortable "setter", "Set", "Set by"%></th>
       <% if current_user %>
         <th>Status</th>
         <th>My Grade</th>
@@ -35,7 +36,7 @@
       <tr>
         <td><%= link_to problem.name, problem %></td>
         <td><%= problem.givengrade %></td>
-        <td><%= problem.setter %></td>
+        <td class="nomobile"><%= problem.setter %></td>
         <% if current_user %>
           <td><%= problem.status(current_user) %></td>
           <td><%= problem.rel(current_user)&.suggestedgrade %></td>
@@ -63,3 +64,4 @@
     		  <li class="listitem-table"><div class="Grey Circle"></div> Grd = Setter's Grade</li>
     		  <li class="listitem-table"><div class="Grey Circle"></div> Set = Set by</li>
     </ul>
+    </div>

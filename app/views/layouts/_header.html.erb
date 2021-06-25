@@ -1,21 +1,61 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%#= link_to image_tag("SpaceLogo.png", alt: "The Space logo", width: "60%"),
-            'http://www.thespacejuhu.in/' %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%#= link_to "Home", root_path %></li>
-        <% if logged_in? %>
-          <li><%= link_to "All Problems", problems_path %></li>
-          <li><%= link_to "My Problems", rel_user_problems_path %></li>
-          <!--li><%#= link_to "Climbers", users_path %></li>
-          <li><%#= link_to "Profile", current_user %></li>
-          <li><%#= link_to "Settings", edit_user_path(current_user) %></li-->
-          <li><%= link_to "Log out", logout_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
+<nav class="navbar1 mb-2">
+  <ul class="navbar-nav">
+
+    <li class="nav-item home">
+      <%= link_to root_path, class: "nav-link" do %>
+        <i class="fa fa-home"></i>
+        <span class="link-text logo-text">Home</span>
+      <% end %>
+    </li>
+
+    <% if current_user && current_user.admin? %>
+      <li class="nav-item">
+        <%= link_to users_path, class: "nav-link" do %>
+          <i class="fa fa-users"></i>
+          <span class="link-text">All Users</span>
         <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+      </li>
+    <% end %>
+
+    <li class="nav-item">
+      <%= link_to problems_path, class: "nav-link" do %>
+        <i class="fa fa-dumbbell"></i>
+        <span class="link-text">Problems</span>
+      <% end %>
+    </li>
+
+    <% if current_user  %>
+      <li class="nav-item">
+        <%= link_to current_user, class: "nav-link" do %>
+          <i class="fa fa-user"></i>
+          <span class="link-text">Profile</span>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to edit_user_path(current_user), class: "nav-link" do %>
+          <i class="fa fa-cog"></i>
+          <span class="link-text">Settings</span>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if current_user %>
+      <li class="nav-item">
+        <%= link_to logout_path, method: :delete, class: "nav-link" do %>
+          <i class="fa fa-door-open"></i>
+          <span class="link-text">Logout</span>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if !current_user %>
+      <li class="nav-item">
+        <%= link_to login_path, class: "nav-link" do %>
+          <i class="fa fa-sign-in-alt"></i>
+          <span class="link-text">Login</span>
+        <% end %>
+      </li>
+    <% end %>
+
+  </ul>
+</nav>

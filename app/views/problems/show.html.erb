@@ -12,44 +12,53 @@
 
 </p>
 
-<table>
-  <thead>
-    <tr>
-      <th class="pr-3 pr-md-5">Setter's Grade</th>
-      <th class="pr-3 pr-md-5">Set by</th>
-      <th class="pr-3 pr-md-5">My Grade</th>
-      <th class="pr-3 pr-md-5">High</th>
-      <th class="pr-3 pr-md-5">Date High Point First Achieved</th>
-      <th class="pr-3 pr-md-5">Date of First Attempt</th>
-      <th class="pr-3 pr-md-5">Rating (0-3 star)</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<div class ="container tabcontent pl-0 pr-0 mb-3">
+  <div class ="container px-1">
+    <div class ="d-flex bg-light">
+      <div class ="cell c-rowheader">Setter's Grade</div>
+      <div class ="cell c-detail"><%= @problem.givengrade %></div>
+    </div>
+    <div class ="d-flex bg-light">
+      <div class ="cell c-rowheader">Set By</div>
+      <div class ="cell c-detail"><%= @problem.setter %></div>
+    </div>
+    <div class ="d-flex bg-light">
+      <div class ="cell c-rowheader">My Grade</div>
+      <div class ="cell c-detail"><%= @rel_user_problem&.suggestedgrade || 'n/a' %></div>
+    </div>
+    <div class ="d-flex bg-light">
+      <div class ="cell c-rowheader">High Point</div>
+      <div class ="cell c-detail"><%= @rel_user_problem&.highpoint || 'n/a' %></div>
+    </div>
+    <div class ="d-flex bg-light">
+      <div class ="cell c-rowheader">Date High Point First Achieved</div>
+      <div class ="cell c-detail"><%= @rel_user_problem&.dohp || 'n/a' %></div>
+    </div>
+    <div class ="d-flex bg-light">
+      <div class ="cell c-rowheader">Date of First Attempt</div>
+      <div class ="cell c-detail"><%= @rel_user_problem&.firsttry || 'n/a' %></div>
+    </div>
+    <div class ="d-flex bg-light">
+      <div class ="cell c-rowheader">Rating (0-3 star)</div>
+      <div class ="cell c-detail"><%= @rel_user_problem&.rating || 'n/a' %></div>
+    </div>
+    <div class ="d-flex bg-light">
+      <div class ="cell c-rowheader">Comment</div>
+      <div class ="cell c-detail"><%= @rel_user_problem&.comment || 'n/a' %></div>
+    </div>
 
-  <tbody>
-      <tr>
-        <td><%= @problem.givengrade %></td>
-        <td><%= @problem.setter %></td>
-        <% if current_user %>
-        <td><%= @rel_user_problem&.suggestedgrade || 'n/a' %></td>
-        <td><%= @rel_user_problem&.highpoint || 'n/a' %></td>
-        <td><%= @rel_user_problem&.dohp || 'n/a' %></td>
-        <td><%= @rel_user_problem&.firsttry || 'n/a' %></td>
-        <td><%= @rel_user_problem&.rating || 'n/a' %></td>
-        <% end %>
-      </tr>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <% if !@rel_user_problem.nil? %>
-  <%= link_to 'Edit My Climb', edit_rel_user_problem_path(@rel_user_problem) %>
+  <div><%= link_to 'Edit My Climb', edit_rel_user_problem_path(@rel_user_problem) %></div>
 <% end %>
 
 <% if current_user && current_user.admin? %>
-  <%= link_to 'Edit Problem', edit_problem_path(@problem) %>
+  <div><%= link_to 'Edit Problem', edit_problem_path(@problem) %></div>
 <% end %>
 
-<%= link_to 'Back', problems_path %>
+<div><%= link_to 'Back', problems_path %></div>
 
 <script>
 	var userSelection = document.getElementById("show_pages");

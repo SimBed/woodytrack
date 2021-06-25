@@ -49,36 +49,16 @@ Problem.create!(name: "Chimpanzee",
              givengrade: "6b+",
              setter: "unknown")
 
- 3.times do |n|
-   # keep characters below validation maximum
-   name  = Faker::Book.title[0, 25]
-   givengrade = %w[6a 6b 6c 7a 7b 7c 8a 8b 8c].sample
-   setter = "unknown"
-   Problem.create!(name: name,
-                givengrade: givengrade,
-                setter:setter)
- end
-
- 3.times do |n|
-   name = Faker::Movies::LordOfTheRings.character[0, 25]
-   givengrade = %w[6a 6b 6c 7a 7b 7c 8a 8b 8c].sample
-   setter = "unknown"
-   Problem.create!(name: name,
-                givengrade: givengrade,
-                setter:setter)
- end
-
- 3.times do |n|
-   name = Faker::Movies::LordOfTheRings.location[0, 25]
-   givengrade = %w[6a 6b 6c 7a 7b 7c 8a 8b 8c].sample
-   setter = "unknown"
-   Problem.create!(name: name,
-                givengrade: givengrade,
-                setter:setter)
- end
-
- 3.times do |n|
-   name = Faker::Games::WarhammerFantasy.hero[0, 25]
+ namearray = []
+ # keep number of characters in problem's name below validation maximum
+ # keep names of problems unique
+ 10.times { namearray << Faker::Book.title[0, 25] }
+ 10.times { namearray << Faker::Movies::LordOfTheRings.character[0, 25] }
+ 10.times { namearray << Faker::Movies::LordOfTheRings.location[0, 25] }
+ 10.times { namearray << Faker::Games::WarhammerFantasy.hero[0, 25] }
+ namearray.uniq!
+ namearray.count.times do |n|
+   name  = namearray[n-1]
    givengrade = %w[6a 6b 6c 7a 7b 7c 8a 8b 8c].sample
    setter = "unknown"
    Problem.create!(name: name,
