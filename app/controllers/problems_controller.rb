@@ -9,6 +9,7 @@ class ProblemsController < ApplicationController
     #    @problems = Problem.all.order(params[:sort], :name).paginate(page: params[:page],per_page: 10)
     @problems = Problem.all.order("#{sort_column} #{sort_direction}", :givengrade).paginate(page: params[:page],
                                                                                             per_page: 20)
+    @grade = Problem.distinct.pluck(:givengrade).sort!                                                                                            
   end
 
   def new
@@ -49,6 +50,10 @@ class ProblemsController < ApplicationController
     @problem.destroy
     flash[:success] = "#{@problem.name} deleted"
     redirect_to problems_path
+  end
+
+  def summary
+    @grade = Problem.distinct.pluck(:givengrade).sort!
   end
 
   private

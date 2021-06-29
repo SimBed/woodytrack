@@ -1,0 +1,10 @@
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('sobering sundaes','6c','SimBed',now(),now()),
+('dyno heathen','6c','unchecked',now(),now()),
+('Biceps & Toes','6c','unchecked',now(),now()),
+('sweet like dairy milk','6c','unchecked',now(),now()),
+('bloodletting','6c','unchecked',now(),now()),
+('Mellow Yellow','6c','unchecked',now(),now()),
+('Age of Pfizer','6c','unchecked',now(),now()),
+;

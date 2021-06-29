@@ -123,6 +123,34 @@ class User < ApplicationRecord
     problems.include?(prob)
   end
 
+  def highest_grade
+    return nil if problems.empty?
+    problems.order_by_grade.first.givengrade
+  end
+
+  def sends_at_grade(grade)
+    return nil if grade.nil?
+    problems.where(givengrade: grade).count
+  end
+
+  def whack_points(multiplier = 2)
+    grade_array = Rails.application.config_for(:climbinginfo)["grades"]
+    grade_array.pop
+    whack_points = 0
+    grade_index = 0
+    grade_array.each do |grade|
+      add = sends_at_grade(grade) * multiplier ** grade_index
+      whack_points += add
+      grade_index += 1
+    end
+    whack_points
+  end
+
+  def hasclimbed?
+    return false if problems.empty?
+    true
+  end
+
   private
 
   # Converts email to all lower-case.
@@ -135,4 +163,6 @@ class User < ApplicationRecord
     self.activation_token  = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
+
+
 end

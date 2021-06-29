@@ -433,3 +433,21 @@ background-image: image-url('down_arrow.gif');
 	font-size: 1.0rem;
 }
 }
+
+.forMobile {
+  display: table-row;
+}
+
+.notForMobile {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .forMobile {
+    display: none;
+  }
+  .notForMobile {
+    display: table-row;
+  }
+
+}

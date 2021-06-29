@@ -64,4 +64,32 @@
     		  <li class="listitem-table"><div class="Grey Circle"></div> Grd = Setter's Grade</li>
     		  <li class="listitem-table"><div class="Grey Circle"></div> Set = Set by</li>
     </ul>
-    </div>
+</div>
+
+<div class="container px-1 mb-0">
+  <table class ="Problemtable">
+    <thead>
+      <tr>
+        <th>Grade</th>
+        <th>Count</th>
+        <% if current_user %>
+          <th>Climbed</th>
+        <% end %>
+      </tr>
+    </thead>
+
+  <tbody>
+  <% @grade.each do |grade| %>
+      <tr>
+        <td><%= grade %></td>
+        <td><%= Problem.grades(grade).count %></td>
+        <% if current_user %>
+          <td><%= Problem.grades(grade).map { |p| p.sent?(current_user) }.count(true) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+</div>

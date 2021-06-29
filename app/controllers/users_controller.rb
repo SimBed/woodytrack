@@ -67,6 +67,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def league_table
+    @users = User.where(activated: true).select { |u| u.hasclimbed? }
+  end
+
   private
 
   def user_params

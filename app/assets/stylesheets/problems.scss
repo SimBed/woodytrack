@@ -21,13 +21,3 @@
   padding-left: 0.5em;
   flex: 2.2;
 }
-
-.nomobile {
-  display: none;
-}
-
-@media (min-width: 576px) {
-  .nomobile {
-    display: block;
-  }
-}
