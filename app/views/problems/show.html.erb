@@ -1,6 +1,4 @@
 <p>
-  <!--strong><%#= @problem.name %></strong-->
-
   <select id="show_pages">
     <!-- https://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-options_for_select-->
     <!-- value, option text, selected -->
@@ -9,7 +7,6 @@
          1 -->
     <%= options_for_select(@problems, params[:id]) %>
   </select>
-
 </p>
 
 <div class ="container tabcontent pl-0 pr-0 mb-3">

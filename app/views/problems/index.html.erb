@@ -3,93 +3,16 @@
 
 <h2>All Problems</h2>
 
+<div id="problems_table" class="container px-1 mb-5">
+  <%= render partial: 'problems_table' %>
+</div>
+
 <% if current_user && current_user.admin? %>
-<%= link_to 'New Problem', new_problem_path %>
+<%= link_to 'New Problem', new_problem_path, {class: 'new'} %>
 <% end %>
 
-<div class="container px-1 mb-0">
-<%= will_paginate %>
-
-<table class ="Problemtable">
-
-  <thead>
-    <tr>
-      <th><%= sortable "name", "Name", "Name"%></th>
-      <th><%= sortable "givengrade", "Grd", "Setter's Grade"%></th>
-      <th class="nomobile"><%= sortable "setter", "Set", "Set by"%></th>
-      <% if current_user %>
-        <th>Status</th>
-        <th>My Grade</th>
-        <th>My Rating</th>
-      <% end %>
-
-      <% if current_user && current_user.admin? %>
-        <th></th>
-        <th></th>
-        <% end %>
-      <!--th>Following</th-->
-     </tr>
-  </thead>
-
-  <tbody>
-    <% @problems.each do |problem| %>
-      <tr>
-        <td><%= link_to problem.name, problem %></td>
-        <td><%= problem.givengrade %></td>
-        <td class="nomobile"><%= problem.setter %></td>
-        <% if current_user %>
-          <td><%= problem.status(current_user) %></td>
-          <td><%= problem.rel(current_user)&.suggestedgrade %></td>
-          <td><%= problem.rel(current_user)&.rating %></td>
-          <% if problem.rel(current_user).nil? %>
-          <td><%= link_to 'Climb', new_rel_user_problem_path(:problem_id => problem.id) %></td>
-          <% else %>
-          <td><%= link_to 'ReClimb', edit_rel_user_problem_path(problem.rel(current_user)) %></td>
-          <% end %>
-        <% end %>
-        <% if current_user && current_user.admin? %>
-        <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-        <td><%= link_to 'Remove', problem, method: :delete, data: { confirm: "Are you sure? All climbers' data for #{problem.name} will be lost." } %></td>
-        <% end %>
-        <!--td><%#= render 'follow_form', problem: problem if logged_in? %></td-->
-
-
-      </tr>
-    <% end %>
-
-  </tbody>
-</table>
-    <ul class="listgroup-table pl-0">
-    		<em>click underlined headings to sort:</em>
-    		  <li class="listitem-table"><div class="Grey Circle"></div> Grd = Setter's Grade</li>
-    		  <li class="listitem-table"><div class="Grey Circle"></div> Set = Set by</li>
-    </ul>
-</div>
-
-<div class="container px-1 mb-0">
-  <table class ="Problemtable">
-    <thead>
-      <tr>
-        <th>Grade</th>
-        <th>Count</th>
-        <% if current_user %>
-          <th>Climbed</th>
-        <% end %>
-      </tr>
-    </thead>
-
-  <tbody>
-  <% @grade.each do |grade| %>
-      <tr>
-        <td><%= grade %></td>
-        <td><%= Problem.grades(grade).count %></td>
-        <% if current_user %>
-          <td><%= Problem.grades(grade).map { |p| p.sent?(current_user) }.count(true) %></td>
-        <% end %>
-      </tr>
-    <% end %>
-
-  </tbody>
-</table>
-
-</div>
+<!--ul class="listgroup-table pl-0">
+    <em>click underlined headings to sort:</em>
+      <li class="listitem-table"><div class="Grey Circle"></div> Grd = Setter's Grade</li>
+      <li class="listitem-table"><div class="Grey Circle"></div> Set = Set by</li>
+</ul-->

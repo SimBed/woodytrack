@@ -69,6 +69,7 @@ class UsersController < ApplicationController
 
   def league_table
     @users = User.where(activated: true).select { |u| u.hasclimbed? }
+    @grade = Problem.distinct.pluck(:givengrade).sort!   
   end
 
   private

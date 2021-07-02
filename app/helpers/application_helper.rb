@@ -9,12 +9,21 @@ module ApplicationHelper
     end
   end
 
-  def sortable(column, coltitle = nil, tooltiptitle = nil)
+  def sortable(column:, coltitle: nil, direction: 'asc')
+    # use a specified column title (if given) or else use the name of the database column given
     coltitle ||= column.titleize
-    css_class = column == sort_column ? "current #{sort_direction}" : 'notcurrent'
-    direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
-    link_to coltitle, { sort: column, direction: direction },
-            { title: tooltiptitle, 'data-toggle' => 'tooltip', class: css_class }
+    # sort_colum and sort_direction are private methods of the controller
+    css_class = column == sort_column ? "current #{sort_direction(direction: direction)}" : 'notcurrent'
+    if column == sort_column && sort_direction(direction: direction) == direction
+      direction = opp_direction(direction)
+    end
+    link_to coltitle, { sort: column, direction: direction }, { class: css_class, remote: true }
+  end
+
+  def opp_direction(direction)
+    return 'desc' if direction == 'asc'
+
+    'asc'
   end
 
   # Returns a shortened date format for easier reading in list

@@ -6,10 +6,20 @@ class ProblemsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    #    @problems = Problem.all.order(params[:sort], :name).paginate(page: params[:page],per_page: 10)
-    @problems = Problem.all.order("#{sort_column} #{sort_direction}", :givengrade).paginate(page: params[:page],
-                                                                                            per_page: 20)
-    @grade = Problem.distinct.pluck(:givengrade).sort!                                                                                            
+    case sort_column
+    when 'name', 'givengrade'
+      # if Player.column_names.include?(sort_column)
+      @problems = Problem.all.order("#{sort_column} #{sort_direction(direction: 'asc')}", :givengrade).paginate(page: params[:page],
+                                                                                                                per_page: 20)
+    when 'status'
+      # @problems = Problem.all.to_a.sort_by { |p| p.status(current_user) }.paginate(page: params[:page], per_page: 20)
+      # @problems.reverse!.paginate(page: params[:page], per_page: 20) if sort_direction == 'desc'
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -63,19 +73,13 @@ class ProblemsController < ApplicationController
     @problem = Problem.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the internet, only allow the white list through.
   def problem_params
     params.require(:problem).permit(:name, :givengrade, :setter)
   end
 
   def sort_column
-    # params[:sort] || "name"
-    Problem.column_names.include?(params[:sort]) ? params[:sort] : 'givengrade'
+    %w[name givengrade setter].include?(params[:sort]) ? params[:sort] : 'givengrade'
   end
 
-  def sort_direction
-    # params[:direction] || "asc"
-    # additional code provides robust sanitisation of what goes into the order clause
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-  end
 end

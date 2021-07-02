@@ -1,49 +1,107 @@
-<% provide(:title, 'League Table') %>
-<h2>League Table</h2>
+<% provide(:title, 'Stats') %>
+<h2>Stats</h2>
 
+<!-- Activity links -->
+<div class="container tab tab_rent mb-4 mt-4">
+  <button id="League_btn" class="tablinks" onclick="openFeature(event, 'leagueSummary')" >League</button>
+  <button id="Problem_btn" class="tablinks" onclick="openFeature(event, 'problemSummary')">Problems</button>
+</div>
+
+<div id="leagueSummary" class="Studio_Use_Group Rehearse tabcontent">
 <div class="container px-1 mb-0">
 
+    <div class="container pl-0 pr-0 mb-3">
+      <div class="container px-1">
+        <div class="forMobile">
+        <div class="forMobile d-flex bg-light">
+          <div class ="cell c-league-name">Name</div>
+          <div class ="cell c-league-stat">Tops</div>
+          <div class ="cell c-league-stat">HG</div>
+          <div class ="cell c-league-stat">TaHG</div>
+          <div class ="cell c-league-stat">WPs</div>
+        </div>
+        </div>
+        <div class="notForMobile">
+        <div class="d-flex notForMobile bg-light">
+          <div class ="cell c-league-name">Name</div>
+          <div class ="cell c-league-stat">Tops</div>
+          <div class ="cell c-league-stat">Highest Grade</div>
+          <div class ="cell c-league-stat">Tops at Highest Grade</div>
+          <div class ="cell c-league-stat">Whack Points</div>
+        </div>
+        </div>
+        <% @users.each do |user| %>
+          <% tops = user.problems.map {|p| p.sent?(user)}.count(true) %>
+          <% highest_grade = user.highest_grade %>
+        <div class ="d-flex bg-light">
+            <div class ="cell c-league-name"><%= link_to user.name, user %></div>
+            <div class ="cell c-league-stat"><%= tops %></div>
+            <div class ="cell c-league-stat"><%= highest_grade %></div>
+            <div class ="cell c-league-stat"><%= user.sends_at_grade(highest_grade) %></div>
+            <div class ="cell c-league-stat"><%= user.whack_points %></div>
+        </div>
+        <% end %>
+      </div>
+    </div>
 
-<table class="Problemtable">
-
-  <thead>
-    <tr class="forMobile">
-      <th><%#= sortable "name", "Name", "Name" %> Name</th>
-      <th>Tops</th>
-      <th>HG</th>
-      <th>TaHG</th>
-      <th>WPs</th>
-   </tr>
-
-   <tr class="notForMobile">
-     <th><%#= sortable "name", "Name", "Name" %> Name</th>
-     <th>Projects</th>
-     <th>Tops</th>
-     <th>Highest Grade</th>
-     <th>Tops at Highest Grade</th>
-     <th>Whack Points</th>
-  </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-        <% tops = user.problems.map {|p| p.sent?(user)}.count(true) %>
-        <% highest_grade = user.highest_grade %>
-      <tr>
-        <td><%= link_to user.name, user %></td>
-        <td><%= tops %></td>
-        <td><%= highest_grade %></td>
-        <td><%= user.sends_at_grade(highest_grade) %></td>
-        <td><%= user.whack_points %></td>
-      </tr>
-    <% end %>
-
-  </tbody>
-</table>
     <ul class="forMobile listgroup-table pl-0">
-    		<em>click underlined headings to sort:</em>
-    		  <li class="listitem-table"><div class="Grey Circle"></div> HG = Highest Grade</li>
-    		  <li class="listitem-table"><div class="Grey Circle"></div> TaHG = Tops at Highest Grade</li>
-    		  <li class="listitem-table"><div class="Grey Circle"></div> WPs = Whack Points</li>
+		  <li class="listitem-table"><div class="Grey Circle"></div> HG = Highest Grade</li>
+		  <li class="listitem-table"><div class="Grey Circle"></div> TaHG = Tops at Highest Grade</li>
+		  <li class="listitem-table"><div class="Grey Circle"></div> WPs = Whack Points</li>
     </ul>
+
 </div>
+</div>
+<div id="problemSummary" class="Studio_Use_Group Rehearse tabcontent">
+  <div class="container px-1 mb-0">
+    <table class ="Problemtable">
+      <thead>
+        <tr>
+          <th>Grade</th>
+          <th>Count</th>
+          <% if current_user %>
+            <th>Climbed</th>
+          <% end %>
+        </tr>
+      </thead>
+
+    <tbody>
+    <% @grade.each do |grade| %>
+        <tr>
+          <td><%= grade %></td>
+          <td><%= Problem.grades(grade).count %></td>
+          <% if current_user %>
+            <td><%= Problem.grades(grade).map { |p| p.sent?(current_user) }.count(true) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // room features tabs
+  	function openFeature(evt, featureName) {
+  	  // Declare all variables
+  	  var i, tabcontent, tablinks;
+
+  	  // Get all elements with class="tabcontent" and hide them
+  	  tabcontent = document.getElementsByClassName("tabcontent");
+  	  for (i = 0; i < tabcontent.length; i++) {
+  		tabcontent[i].style.display = "none";
+  	  }
+
+  	  // Get all elements with class="tablinks" and remove the class "active"
+  	  tablinks = document.getElementsByClassName("tablinks");
+  	  for (i = 0; i < tablinks.length; i++) {
+  		tablinks[i].className = tablinks[i].className.replace(" active", "");
+  	  }
+
+  	  // Show the current tab, and add an "active" class to the button that opened the tab
+  	  document.getElementById(featureName).style.display = "block";
+  	  evt.currentTarget.className += " active";
+  	}
+
+    document.getElementById("League_btn").click();
+  </script>

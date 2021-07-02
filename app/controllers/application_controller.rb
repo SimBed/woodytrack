@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
     flash[:danger] = 'Please log in.'
     redirect_to login_url
   end
+
+  def sort_direction(direction: 'asc')
+    # provides robust sanitisation of what goes into the order clause
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : direction
+  end
 end
