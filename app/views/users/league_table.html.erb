@@ -8,40 +8,9 @@
 </div>
 
 <div id="leagueSummary" class="Studio_Use_Group Rehearse tabcontent">
-<div class="container px-1 mb-0">
 
-    <div class="container pl-0 pr-0 mb-3">
-      <div class="container px-1">
-        <div class="forMobile">
-        <div class="forMobile d-flex bg-light">
-          <div class ="cell c-league-name">Name</div>
-          <div class ="cell c-league-stat">Tops</div>
-          <div class ="cell c-league-stat">HG</div>
-          <div class ="cell c-league-stat">TaHG</div>
-          <div class ="cell c-league-stat">WPs</div>
-        </div>
-        </div>
-        <div class="notForMobile">
-        <div class="d-flex notForMobile bg-light">
-          <div class ="cell c-league-name">Name</div>
-          <div class ="cell c-league-stat">Tops</div>
-          <div class ="cell c-league-stat">Highest Grade</div>
-          <div class ="cell c-league-stat">Tops at Highest Grade</div>
-          <div class ="cell c-league-stat">Whack Points</div>
-        </div>
-        </div>
-        <% @users.each do |user| %>
-          <% tops = user.problems.map {|p| p.sent?(user)}.count(true) %>
-          <% highest_grade = user.highest_grade %>
-        <div class ="d-flex bg-light">
-            <div class ="cell c-league-name"><%= link_to user.name, user %></div>
-            <div class ="cell c-league-stat"><%= tops %></div>
-            <div class ="cell c-league-stat"><%= highest_grade %></div>
-            <div class ="cell c-league-stat"><%= user.sends_at_grade(highest_grade) %></div>
-            <div class ="cell c-league-stat"><%= user.whack_points %></div>
-        </div>
-        <% end %>
-      </div>
+    <div id="league_table" class="container pl-0 pr-0 mb-3">
+      <%= render partial: 'league_table' %>
     </div>
 
     <ul class="forMobile listgroup-table pl-0">
@@ -50,7 +19,6 @@
 		  <li class="listitem-table"><div class="Grey Circle"></div> WPs = Whack Points</li>
     </ul>
 
-</div>
 </div>
 <div id="problemSummary" class="Studio_Use_Group Rehearse tabcontent">
   <div class="container px-1 mb-0">

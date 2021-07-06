@@ -151,6 +151,10 @@ class User < ApplicationRecord
     true
   end
 
+  def topouts
+    rel_user_problems.where(highpoint: 'top').count
+  end
+
   private
 
   # Converts email to all lower-case.

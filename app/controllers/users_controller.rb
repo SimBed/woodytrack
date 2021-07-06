@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
+  helper_method :sort_column, :sort_direction
+
   def index
     @users = User.where(activated: true).paginate(page: params[:page])
   end
@@ -68,8 +70,20 @@ class UsersController < ApplicationController
   end
 
   def league_table
-    @users = User.where(activated: true).select { |u| u.hasclimbed? }
-    @grade = Problem.distinct.pluck(:givengrade).sort!   
+    # this approach makes @users an array whereas ActiveRecord preferred
+    # @users = User.where(activated: true).select { |u| u.hasclimbed? }
+     @users = User.where(activated: true).joins(:rel_user_problems).distinct
+    case sort_column
+    when 'name'
+      @users = @users.order("#{sort_column} #{sort_direction(direction: 'asc')}").paginate(page: params[:page], per_page: 20)
+    when 'tops'
+      @users = @users.to_a.sort_by { |u| u.topouts }.paginate(page: params[:page], per_page: 20) if sort_direction == 'asc'
+      @users = @users.to_a.sort_by { |u| u.topouts }.reverse!.paginate(page: params[:page], per_page: 20) if sort_direction == 'desc'
+    end
+
+    @grade = Problem.distinct.pluck(:givengrade).sort!
+
+    ajax_respond
   end
 
   private
@@ -86,4 +100,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
   end
+
+  def sort_column
+    %w[name tops].include?(params[:sort]) ? params[:sort] : 'name'
+  end
+
+  def ajax_respond
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
 end

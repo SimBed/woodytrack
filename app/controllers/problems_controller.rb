@@ -12,14 +12,11 @@ class ProblemsController < ApplicationController
       @problems = Problem.all.order("#{sort_column} #{sort_direction(direction: 'asc')}", :givengrade).paginate(page: params[:page],
                                                                                                                 per_page: 20)
     when 'status'
-      # @problems = Problem.all.to_a.sort_by { |p| p.status(current_user) }.paginate(page: params[:page], per_page: 20)
-      # @problems.reverse!.paginate(page: params[:page], per_page: 20) if sort_direction == 'desc'
+      @problems = Problem.all.to_a.sort_by { |p| p.status(current_user) }.paginate(page: params[:page], per_page: 20) if sort_direction == 'asc'
+      @problems = Problem.all.to_a.sort_by { |p| p.status(current_user) }.reverse!.paginate(page: params[:page], per_page: 20) if sort_direction == 'desc'
     end
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    ajax_respond
   end
 
   def new
@@ -79,7 +76,14 @@ class ProblemsController < ApplicationController
   end
 
   def sort_column
-    %w[name givengrade setter].include?(params[:sort]) ? params[:sort] : 'givengrade'
+    %w[name givengrade setter status].include?(params[:sort]) ? params[:sort] : 'givengrade'
+  end
+
+  def ajax_respond
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 end

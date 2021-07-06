@@ -25,4 +25,12 @@ class Problem < ApplicationRecord
    return false
  end
 
+ def averagegrade
+   gradeArray = Rails.application.config_for(:climbinginfo)["grades"]
+   userGrades = rel_user_problems.map { |r| r.suggestedgrade}
+   return if userGrades.empty?
+   avIndex = userGrades.inject(0) { |accum, i| accum + gradeArray.index(i) }.to_f / userGrades.size
+   gradeArray[avIndex.round]
+ end
+
 end
