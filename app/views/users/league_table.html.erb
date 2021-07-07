@@ -8,44 +8,20 @@
 </div>
 
 <div id="leagueSummary" class="Studio_Use_Group Rehearse tabcontent">
-
-    <div id="league_table" class="container pl-0 pr-0 mb-3">
-      <%= render partial: 'league_table' %>
-    </div>
-
-    <ul class="forMobile listgroup-table pl-0">
-		  <li class="listitem-table"><div class="Grey Circle"></div> HG = Highest Grade</li>
-		  <li class="listitem-table"><div class="Grey Circle"></div> TaHG = Tops at Highest Grade</li>
-		  <li class="listitem-table"><div class="Grey Circle"></div> WPs = Whack Points</li>
-    </ul>
-
+  <div id="league_table" class="container pl-0 pr-0 mb-3">
+    <%= render partial: 'league_table' %>
+  </div>
+  <ul class="forMobile listgroup-table pl-0">
+	  <li class="listitem-table"><div class="Grey Circle"></div> HG = Highest Grade</li>
+	  <li class="listitem-table"><div class="Grey Circle"></div> TaHG = Tops at Highest Grade</li>
+	  <li class="listitem-table"><div class="Grey Circle"></div> WPs = Whack Points</li>
+  </ul>
 </div>
+
 <div id="problemSummary" class="Studio_Use_Group Rehearse tabcontent">
-  <div class="container px-1 mb-0">
-    <table class ="Problemtable">
-      <thead>
-        <tr>
-          <th>Grade</th>
-          <th>Count</th>
-          <% if current_user %>
-            <th>Climbed</th>
-          <% end %>
-        </tr>
-      </thead>
-
-    <tbody>
-    <% @grade.each do |grade| %>
-        <tr>
-          <td><%= grade %></td>
-          <td><%= Problem.grades(grade).count %></td>
-          <% if current_user %>
-            <td><%= Problem.grades(grade).map { |p| p.sent?(current_user) }.count(true) %></td>
-          <% end %>
-        </tr>
-      <% end %>
-
-    </tbody>
-  </table>
+  <div id="problem_summary_table" class="container pl-0 pr-0 mb-3">
+    <%= render partial: 'problem_summary_table' %>
+  </div>
 </div>
 
 <script>

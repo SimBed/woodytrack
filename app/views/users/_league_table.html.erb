@@ -1,13 +1,15 @@
-<div class="forMobile d-flex bg-light sort_header">
-  <div class ="cell c-colheader h-problem-name"><%= sortable(column: 'name') %></div>
-  <div class ="cell c-colheader h-problem-status"><%= sortable(column: 'tops', coltitle: 'Tops') %></div>
-  <div class ="cell c-colheader h-problem-status">HG</div>
-  <div class ="cell c-colheader h-problem-status">TaHG</div>
-  <div class ="cell c-colheader h-problem-status">WPs</div>
+<div class="forMobile">
+  <div class="d-flex bg-light sort_header">
+    <div class ="cell c-colheader h-problem-name"><%= sortable(column: 'name') %></div>
+    <div class ="cell c-colheader h-problem-status"><%= sortable(column: 'tops', coltitle: 'Tops') %></div>
+    <div class ="cell c-colheader h-problem-status">HG</div>
+    <div class ="cell c-colheader h-problem-status">TaHG</div>
+    <div class ="cell c-colheader h-problem-status">WPs</div>
+  </div>
 </div>
 
 <div class="notForMobile">
-<div class="d-flex notForMobile bg-light">
+<div class="d-flex bg-light">
   <div class ="cell c-league-name">Name</div>
   <div class ="cell c-league-stat">Tops</div>
   <div class ="cell c-league-stat">Highest Grade</div>
