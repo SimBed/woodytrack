@@ -123,18 +123,29 @@ class User < ApplicationRecord
     problems.include?(prob)
   end
 
-  def highest_grade
+  def highest_grade_topped
     return nil if problems.empty?
-    problems.order_by_grade.first.givengrade
+
+    Problem.joins("INNER JOIN rel_user_problems on rel_user_problems.problem_id = problems.id
+                   INNER JOIN users on users.id = rel_user_problems.user_id")
+                   .where("users.id=#{id}")
+                   .where("rel_user_problems.highpoint = ?", 'top')
+                   .order('givengrade DESC')&.first&.givengrade
   end
 
   def sends_at_grade(grade)
     return nil if grade.nil?
-    problems.where(givengrade: grade).count
+
+    Problem.joins("INNER JOIN rel_user_problems on rel_user_problems.problem_id = problems.id
+                   INNER JOIN users on users.id = rel_user_problems.user_id")
+                   .where("users.id=#{id}")
+                   .where("rel_user_problems.highpoint = ?", 'top')
+                   .where("givengrade = ?", grade).count
   end
 
   def whack_points(multiplier = 2)
     grade_array = Rails.application.config_for(:climbinginfo)["grades"]
+    # remove 'proj'
     grade_array.pop
     whack_points = 0
     grade_index = 0
