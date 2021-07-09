@@ -1,19 +1,19 @@
 <div class="forMobile">
   <div class="d-flex bg-light sort_header">
+    <div class ="cell c-colheader h-problem-status">Pos</div>
     <div class ="cell c-colheader h-problem-name"><%= sortable(column: 'name') %></div>
     <div class ="cell c-colheader h-problem-status"><%= sortable(column: 'tops', coltitle: 'Tops') %></div>
-    <div class ="cell c-colheader h-problem-status">HG</div>
-    <div class ="cell c-colheader h-problem-status">TaHG</div>
-    <div class ="cell c-colheader h-problem-status">WPs</div>
+    <div class ="cell c-colheader h-problem-status"><%= sortable(column: 'highest_grade_topped', coltitle: 'HG') %></div>
+    <div class ="cell c-colheader h-problem-status"><%= sortable(column: 'whack_points', coltitle: 'WPs', direction: 'desc') %></div>
   </div>
 </div>
 
 <div class="notForMobile">
 <div class="d-flex bg-light">
+  <div class ="cell c-league-stat">Position</div>
   <div class ="cell c-league-name">Name</div>
   <div class ="cell c-league-stat">Tops</div>
   <div class ="cell c-league-stat">Highest Grade</div>
-  <div class ="cell c-league-stat">Tops at Highest Grade</div>
   <div class ="cell c-league-stat">Whack Points</div>
 </div>
 </div>
@@ -21,10 +21,10 @@
   <%# tops = user.problems.map {|p| p.sent?(user)}.count(true) %>
   <% highest_grade = user.highest_grade_topped %>
 <div class ="d-flex bg-light">
+    <div class ="cell c-league-stat"><%= @users_by_wp_position.index(user) + 1 %></div>
     <div class ="cell c-league-name"><%= link_to user.name, user %></div>
     <div class ="cell c-league-stat"><%= user.topouts %></div>
-    <div class ="cell c-league-stat"><%= highest_grade %></div>
-    <div class ="cell c-league-stat"><%= user.sends_at_grade(highest_grade) %></div>
+    <div class ="cell c-league-stat"><%= highest_grade %><span><%= " (".concat(user.sends_at_grade(highest_grade).to_s).concat(")") unless highest_grade.nil? %></span></div>
     <div class ="cell c-league-stat"><%= user.whack_points %></div>
 </div>
 <% end %>

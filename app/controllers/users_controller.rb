@@ -70,15 +70,24 @@ class UsersController < ApplicationController
   end
 
   def league_table
-    # this approach makes @users an array whereas ActiveRecord preferred
+    # this approach makes @users an array whereas an ActiveRecord is preferred.
     # @users = User.where(activated: true).select { |u| u.hasclimbed? }
-     @users = User.where(activated: true).joins(:rel_user_problems).distinct
+    # select all users who have logged a climb
+    @users = User.where(activated: true).joins(:rel_user_problems).distinct
+    @users_by_wp_position = @users.to_a.sort_by { |u| -u.whack_points }
     case sort_column
     when 'name'
       @users = @users.order("#{sort_column} #{sort_direction(direction: 'asc')}").paginate(page: params[:page], per_page: 20)
     when 'tops'
       @users = @users.to_a.sort_by { |u| u.topouts }.paginate(page: params[:page], per_page: 20) if sort_direction == 'asc'
       @users = @users.to_a.sort_by { |u| u.topouts }.reverse!.paginate(page: params[:page], per_page: 20) if sort_direction == 'desc'
+    when 'highest_grade_topped'
+      # the 'or 0' mitigates failure when using sort_by when an element is nil
+      @users = @users.to_a.sort_by { |u| u.highest_grade_topped or '0' }.paginate(page: params[:page], per_page: 20) if sort_direction == 'asc'
+      @users = @users.to_a.sort_by { |u| u.highest_grade_topped or  '0' }.reverse!.paginate(page: params[:page], per_page: 20) if sort_direction == 'desc'
+    when 'whack_points'
+      @users = @users.to_a.sort_by { |u| u.whack_points }.paginate(page: params[:page], per_page: 20) if sort_direction == 'asc'
+      @users = @users.to_a.sort_by { |u| u.whack_points }.reverse!.paginate(page: params[:page], per_page: 20) if sort_direction == 'desc'
     end
 
     @grade = Problem.distinct.pluck(:givengrade).sort!
@@ -102,7 +111,12 @@ class UsersController < ApplicationController
   end
 
   def sort_column
-    %w[name tops].include?(params[:sort]) ? params[:sort] : 'name'
+    %w[name tops highest_grade_topped whack_points].include?(params[:sort]) ? params[:sort] : 'whack_points'
+  end
+
+  def sort_direction(direction: 'desc')
+    # controller specific sort_direction method here rather than general in application_controller which defaults to asc
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : direction
   end
 
   def ajax_respond
