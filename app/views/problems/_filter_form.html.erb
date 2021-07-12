@@ -1,0 +1,105 @@
+<div class="d-flex mb-2 wk_option">
+
+<!-- bridge league approach -->
+  <!--select id="show_pages">
+    <%#= options_for_select(@leagues, params[:id]) %>
+  </select-->
+
+  <form action="/problems" method="GET">
+    <div class="container search">
+      <i class="fas fa-sort-alpha-down"></i>
+      <select class="form-control-sm mb-2 search pr-3" name="sort_option" onchange="this.form.submit()">
+        <option disabled="disabled" selected="selected" value="">Sort by</option>
+        <option value="grade" <%="selected" if session[:sort_option] == "grade"%> >grade</option>
+        <option value="my_grade" <%="selected" if session[:sort_option] == "my_grade"%> >my grade</option>
+        <option value="status" <%="selected" if session[:sort_option] == "status"%> >status</option>
+        <option value="name" <%="selected" if session[:sort_option] == "name"%> >name</option>
+        <option value="setter" <%="selected" if session[:sort_option] == "setter"%> >setter</option>
+        <!--removed the selected class so random can be reselected-->
+        <option value="random" >random</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="smallcircle mr-2" style="margin-left:auto">
+    <button onclick="toggleHidden()" class="advsearch">
+      <i id="advsearch_toggler" class="fa fa-filter <%= "advsearch_toggler_hide" if session[:advsearchshow] == "hide" %>"></i>
+    </button>
+  </div>
+
+</div>
+
+  <div id="advsearch_options" class="container search <%= session[:advsearchshow] == "hide" ? "advsearch_hide" : "advsearch_show" %>">
+  <!-- alternative for default advanced search form is hidden -->
+  <!--div id="advsearch_options" class="container search <%#= session[:advsearchshow] == "show" ? "advsearch_show" : "advsearch_hide" %>"-->
+      <hr class = "search"></hr>
+
+  <%= form_with(url: "/problems/search", method: "get", local: true, class: "form-class") do %>
+
+  <div class="container mb-1">
+  <div class="row">
+  <div class="col-4 px-0">
+  <fieldset>
+    <legend>GRADE</legend>
+    <% @grade.each do |grade| %>
+      <div class ="d-flex">
+        <%= check_box_tag 'grade[]', grade, session[:filter_grade].present? ? session[:filter_grade].include?(grade) : false, class: "checkbox-class", id: "chbox#{grade}" %>
+        <%= label_tag 'grade[]', grade %>
+      </div>
+    <% end %>
+  </fieldset>
+  </div>
+
+  <div class="col-8 px-0">
+  <fieldset>
+    <legend>STATUS</legend>
+    <% @status.each do |status| %>
+      <div class ="d-flex">
+        <%= check_box_tag 'status[]', status, session[:filter_status].present? ? session[:filter_status].include?(status) : false, class: "checkbox-class" %>
+        <%= label_tag 'status[]', status %>
+      </div>
+    <% end %>
+  </fieldset>
+  </div>
+
+  </div>
+  </div>
+
+  <%= hidden_field_tag 'advsearchshow', 'show'  %>
+
+  <div class="container d-flex">
+      <%= link_to clear_path, class: "search searchdelete" do%>
+      <i class="fa fa-trash"> Filters</i>
+      <% end %>
+  </div>
+
+<% end %>
+<hr class = "search mb-1"></hr>
+
+</div>
+
+<script>
+
+function toggleHidden() {
+// hide/display search
+      var x = document.getElementById("advsearch_options");
+      x.classList.toggle('advsearch_hide');
+
+      var y = document.getElementById("advsearch_toggler");
+      y.classList.toggle('advsearch_toggler_hide');
+
+      //let Rails know whether display is show or hide. Set the hidden field in the form to true/false.
+      //element with id = advsearchshow is the form hidden field
+      var z = document.getElementById("advsearchshow");
+      if (x.classList.contains("advsearch_hide")) {
+        z.value = "hide";
+      } else {
+        z.value = "show";
+      }
+    }
+
+    $(".checkbox-class").on("click", function (){
+    $(".form-class").submit();
+  });
+
+</script>

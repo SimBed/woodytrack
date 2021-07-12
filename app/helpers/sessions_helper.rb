@@ -1,4 +1,10 @@
 module SessionsHelper
+  def clear_session(*args)
+    args.each do |session_key|
+      session[session_key] = nil
+    end
+  end
+
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id

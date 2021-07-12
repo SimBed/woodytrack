@@ -1,7 +1,7 @@
 class Problem < ApplicationRecord
   has_many :rel_user_problems, dependent: :destroy
   has_many :users, through: :rel_user_problems
-  scope :order_by_grade, -> { order(givengrade: :desc) }
+  scope :order_by_givengrade, -> { order(givengrade: :desc) }
   validates :name,  presence: true, length: { maximum: 26 },
                     uniqueness: { case_sensitive: false }
 

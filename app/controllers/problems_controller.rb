@@ -1,4 +1,5 @@
 class ProblemsController < ApplicationController
+  before_action :initialize_sort, only: :index
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
   before_action :admin_user,     only: [:new, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:show]
@@ -6,15 +7,20 @@ class ProblemsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    case sort_column
-    when 'name', 'givengrade'
-      # if Player.column_names.include?(sort_column)
-      @problems = Problem.all.order("#{sort_column} #{sort_direction(direction: 'asc')}", :givengrade).paginate(page: params[:page],
-                                                                                                                per_page: 20)
-    when 'status'
-      @problems = Problem.all.to_a.sort_by { |p| p.status(current_user) }.paginate(page: params[:page], per_page: 20) if sort_direction == 'asc'
-      @problems = Problem.all.to_a.sort_by { |p| p.status(current_user) }.reverse!.paginate(page: params[:page], per_page: 20) if sort_direction == 'desc'
-    end
+    handle_search
+    @problems = @problems.send("order_by_#{session[:sort_option]}").paginate(page: params[:page], per_page: 10)
+    @grade = Problem.distinct.pluck(:givengrade).sort!
+    @status = %w[not\ tried sent project]
+
+    # case sort_column
+    # when 'name', 'givengrade'
+    #   # if Player.column_names.include?(sort_column)
+    #   @problems = Problem.all.order("#{sort_column} #{sort_direction(direction: 'asc')}", :givengrade).paginate(page: params[:page],
+    #                                                                                                             per_page: 20)
+    # when 'status'
+    #   @problems = Problem.all.to_a.sort_by { |p| p.status(current_user) }.paginate(page: params[:page], per_page: 20) if sort_direction == 'asc'
+    #   @problems = Problem.all.to_a.sort_by { |p| p.status(current_user) }.reverse!.paginate(page: params[:page], per_page: 20) if sort_direction == 'desc'
+    # end
 
     ajax_respond
   end
@@ -59,8 +65,26 @@ class ProblemsController < ApplicationController
     redirect_to problems_path
   end
 
+  # clear_session defined in sessions_helper.rb
+  def clear
+    clear_session(:filter_grade, :filter_status)
+    redirect_to problems_path
+  end
+
   def summary
     @grade = Problem.distinct.pluck(:givengrade).sort!
+  end
+
+  def search
+    clear_session(:filter_grade, :filter_status)
+    # Without the ors (||) the sessions would get set to nil when redirecting to workouts other than through the
+    # search form (e.g. by clicking workouts on the navbar) (as the params itmes are nil in these cases)
+    session[:filter_grade] = params[:grade] || session[:filter_grade]
+    # session[:filter_intensity] = params[:intensity] || session[:filter_intensity]
+    session[:filter_status] = params[:status] || session[:filter_status]
+    session[:advsearchshow] = params[:advsearchshow] || session[:advsearchshow]
+    filters = [session[:filter_grade], session[:filter_status]]
+    redirect_to problems_path
   end
 
   private
@@ -84,6 +108,16 @@ class ProblemsController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def initialize_sort
+    session[:sort_option] = params[:sort_option] || session[:sort_option] || 'givengrade'
+  end
+
+  def handle_search
+    @problems = Problem.all
+    @problems = @problems.where(givengrade: session[:filter_grade]) if session[:filter_grade].present?
+    #@problems = @problems.where(bodyfocus: session[:filter_status]) if session[:filter_status].present?
   end
 
 end
