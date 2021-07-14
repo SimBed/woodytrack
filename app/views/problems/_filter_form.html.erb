@@ -12,10 +12,12 @@
         <option disabled="disabled" selected="selected" value="">Sort by</option>
         <option value="givengrade_asc" <%="selected" if session[:sort_option] == "givengrade_asc"%>>easiest first</option>
         <option value="givengrade_desc" <%="selected" if session[:sort_option] == "givengrade_desc"%> >hardest first</option>
+        <% if current_user %>
         <option value="suggestedgrade_asc" <%="selected" if session[:sort_option] == "suggestedgrade_asc"%> >my grade (easiest first)</option>
         <option value="suggestedgrade_desc" <%="selected" if session[:sort_option] == "suggestedgrade_desc"%> >my grade (hardest first)</option>
         <option value="status_asc" <%="selected" if session[:sort_option] == "status_asc"%> >status (not tried first)</option>
         <option value="status_desc" <%="selected" if session[:sort_option] == "status_desc"%> >status (sent first)</option>
+        <% end %>
         <option value="name" <%="selected" if session[:sort_option] == "name"%> >name</option>
         <option value="setter" <%="selected" if session[:sort_option] == "setter"%> >setter</option>
         <!--removed the selected class so random can be reselected-->
@@ -53,6 +55,7 @@
   </fieldset>
   </div>
 
+  <% if current_user %>
   <div class="col-8 px-0">
   <fieldset>
     <legend>STATUS</legend>
@@ -64,7 +67,8 @@
     <% end %>
   </fieldset>
   </div>
-
+  <% end %>
+  
   </div>
   </div>
 
