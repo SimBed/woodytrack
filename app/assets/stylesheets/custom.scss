@@ -753,3 +753,105 @@ div i.fa, i.fas {
   color: $greenfly;
   font-size: 1.0em;
 }
+
+div i.fa-sort-alpha-down{
+  color: $gray-darker;
+}
+
+%circle {
+  width:70px;
+  height:70px;
+  border: 1px solid;
+  border-color: $bg-light;
+  border-radius:50%;
+  font-size:32px;
+  font-weight: bolder;
+  /* color: $greenfly; */
+  color: #454a5d;
+  text-align:center;
+  background-color: $bg-light;
+  /*margin-top: 0.5em;*/
+  margin-bottom: 0.5em;
+    &::first-line{
+      line-height:70px;
+    }
+  }
+
+div.bigcircle {
+  @extend %circle;
+  box-shadow: 1px 3px 2px $gray-darker inset;
+}
+
+div.smallcircle {
+  @extend %circle;
+  width:40px;  font-weight: bolder;
+  text-align:center;
+  height:40px;
+  font-size:16px;
+  box-shadow: 1px 3px 2px $gray-darker;
+    &::first-line{
+      line-height:40px;
+    }
+}
+
+select.search {
+  color: $gray-darker;
+  border: solid;
+  border-color: $bg-light;
+  border-width: 1px;
+  background-color: $bg-light;
+}
+
+select.search:focus {
+  border-color: $blue-search;
+  outline: 0;
+}
+
+/* stakoverflow solution to prevent the background of the input changing colour on input */
+/* search Removing input background colour for Chrome autocomplete*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px $bg-light inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: $gray-darker;
+}
+
+option:disabled {
+  color: black;
+}
+
+%buttonsearch {
+  border: none;
+  padding-left: 1px;
+  padding-right: 1px;
+  background-color: white;
+}
+button.search{
+  @extend %buttonsearch;
+}
+
+button.advsearch {
+  @extend %buttonsearch;
+/*  position:absolute;
+  right: 15px;*/
+}
+
+button.advsearch:focus {
+  outline: 0;
+}
+
+.advsearch_hide {
+  display: none !important;
+}
+.advsearch_show {
+  display:block;
+}
+
+button i.advsearch_toggler_hide{
+  color: $gray-darker;
+  opacity: 0.75;
+}

@@ -1,7 +1,10 @@
 class Problem < ApplicationRecord
   has_many :rel_user_problems, dependent: :destroy
   has_many :users, through: :rel_user_problems
-  scope :order_by_givengrade, -> { order(givengrade: :desc) }
+  scope :order_by_givengrade_asc, -> { order(givengrade: :asc) }
+  scope :order_by_givengrade_desc, -> { order(givengrade: :desc) }
+  scope :order_by_name, -> { order(name: :asc) }
+  scope :order_by_setter, -> { order(setter: :asc) }
   validates :name,  presence: true, length: { maximum: 26 },
                     uniqueness: { case_sensitive: false }
 
@@ -33,4 +36,8 @@ class Problem < ApplicationRecord
    gradeArray[avIndex.round]
  end
 
+ def suggestedgrade(user)
+   return givengrade if rel_user_problems.find_by(user_id: user.id).nil?
+   rel_user_problems.find_by(user_id: user.id).suggestedgrade
+ end
 end

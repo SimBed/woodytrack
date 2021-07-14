@@ -2,6 +2,7 @@
 <%# page = params.fetch(:page, 1).to_i %>
 <%#= link_to '<<', {page: page - 1 }, {class: "paginate_icon"} %>
 <%#= link_to '>>', {page: page + 1 }, {class: "paginate_icon pl-2"} %>
+<% if false %>
 <div class ="d-flex bg-light sort_header">
     <div class ="cell c-colheader h-problem-name"><%= sortable(column: 'name') %></div>
     <div class ="cell c-colheader h-problem-grade"><%= sortable(column: 'givengrade', coltitle: 'Grade') %></div>
@@ -15,6 +16,7 @@
       <div class ="cell c-colheader h-problem-status"></div>
     <% end %>
 </div>
+<% end %>
 
 <% @problems.each do |problem| %>
   <div class ="d-flex bg-light">

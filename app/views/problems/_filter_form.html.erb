@@ -10,18 +10,21 @@
       <i class="fas fa-sort-alpha-down"></i>
       <select class="form-control-sm mb-2 search pr-3" name="sort_option" onchange="this.form.submit()">
         <option disabled="disabled" selected="selected" value="">Sort by</option>
-        <option value="grade" <%="selected" if session[:sort_option] == "grade"%> >grade</option>
-        <option value="my_grade" <%="selected" if session[:sort_option] == "my_grade"%> >my grade</option>
-        <option value="status" <%="selected" if session[:sort_option] == "status"%> >status</option>
+        <option value="givengrade_asc" <%="selected" if session[:sort_option] == "givengrade_asc"%>>easiest first</option>
+        <option value="givengrade_desc" <%="selected" if session[:sort_option] == "givengrade_desc"%> >hardest first</option>
+        <option value="suggestedgrade_asc" <%="selected" if session[:sort_option] == "suggestedgrade_asc"%> >my grade (easiest first)</option>
+        <option value="suggestedgrade_desc" <%="selected" if session[:sort_option] == "suggestedgrade_desc"%> >my grade (hardest first)</option>
+        <option value="status_asc" <%="selected" if session[:sort_option] == "status_asc"%> >status (not tried first)</option>
+        <option value="status_desc" <%="selected" if session[:sort_option] == "status_desc"%> >status (sent first)</option>
         <option value="name" <%="selected" if session[:sort_option] == "name"%> >name</option>
         <option value="setter" <%="selected" if session[:sort_option] == "setter"%> >setter</option>
         <!--removed the selected class so random can be reselected-->
         <option value="random" >random</option>
       </select>
-    </div>
+  </div>
   </form>
 
-  <div class="smallcircle mr-2" style="margin-left:auto">
+  <div class="smallcircle" style="margin-right:0.5em; margin-left:auto;">
     <button onclick="toggleHidden()" class="advsearch">
       <i id="advsearch_toggler" class="fa fa-filter <%= "advsearch_toggler_hide" if session[:advsearchshow] == "hide" %>"></i>
     </button>
@@ -32,7 +35,7 @@
   <div id="advsearch_options" class="container search <%= session[:advsearchshow] == "hide" ? "advsearch_hide" : "advsearch_show" %>">
   <!-- alternative for default advanced search form is hidden -->
   <!--div id="advsearch_options" class="container search <%#= session[:advsearchshow] == "show" ? "advsearch_show" : "advsearch_hide" %>"-->
-      <hr class = "search"></hr>
+  <hr class = "search mb-3"></hr>
 
   <%= form_with(url: "/problems/search", method: "get", local: true, class: "form-class") do %>
 
@@ -74,7 +77,7 @@
   </div>
 
 <% end %>
-<hr class = "search mb-1"></hr>
+<hr class = "search mb-3"></hr>
 
 </div>
 

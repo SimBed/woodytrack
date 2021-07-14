@@ -8,10 +8,24 @@ class ProblemsController < ApplicationController
 
   def index
     handle_search
-    @problems = @problems.send("order_by_#{session[:sort_option]}").paginate(page: params[:page], per_page: 10)
+    #@problems = @problems.send("order_by_#{session[:sort_option]}").paginate(page: params[:page], per_page: 10)
     @grade = Problem.distinct.pluck(:givengrade).sort!
     @status = %w[not\ tried sent project]
 
+    case session[:sort_option]
+    when 'givengrade_asc', 'givengrade_desc', 'name', 'setter'
+      @problems = @problems.send("order_by_#{session[:sort_option]}").paginate(page: params[:page], per_page: 20)
+    when 'suggestedgrade_asc'
+      @problems = @problems.to_a.sort_by { |p| p.suggestedgrade(current_user) }.paginate(page: params[:page], per_page: 20)
+    when 'suggestedgrade_desc'
+      @problems = @problems.to_a.sort_by { |p| p.suggestedgrade(current_user) }.reverse!.paginate(page: params[:page], per_page: 20)
+    when 'status_asc'
+      @problems = @problems.to_a.sort_by { |p| p.status(current_user) }.paginate(page: params[:page], per_page: 20)
+    when 'status_desc'
+      @problems = @problems.to_a.sort_by { |p| p.status(current_user) }.reverse!.paginate(page: params[:page], per_page: 20)
+    end
+
+#givengrade_asc
     # case sort_column
     # when 'name', 'givengrade'
     #   # if Player.column_names.include?(sort_column)
@@ -111,13 +125,15 @@ class ProblemsController < ApplicationController
   end
 
   def initialize_sort
-    session[:sort_option] = params[:sort_option] || session[:sort_option] || 'givengrade'
+    session[:sort_option] = params[:sort_option] || session[:sort_option] || 'givengrade_asc'
   end
 
   def handle_search
     @problems = Problem.all
     @problems = @problems.where(givengrade: session[:filter_grade]) if session[:filter_grade].present?
-    #@problems = @problems.where(bodyfocus: session[:filter_status]) if session[:filter_status].present?
+    @problems = @problems.select { |p| session[:filter_status].include?(p.status(current_user)) } if session[:filter_status].present?
+    # hack to convert back to ActiveRecord for the order_by scopes of the index method, which will fail on an Array
+    @problems = Problem.where(id: @problems.map(&:id)) if @problems.is_a?(Array)
   end
 
 end
