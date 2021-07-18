@@ -13,34 +13,36 @@ class RelUserProblemsController < ApplicationController
 
   def new
     @problem = Problem.find(params[:problem_id])
-    current_user.probfollow(@problem)
-    @rel_user_problem = RelUserProblem.find_by(user_id: current_user.id, problem_id: params[:problem_id])
+    #current_user.probfollow(@problem)
+    #@rel_user_problem = RelUserProblem.find_by(user_id: current_user.id, problem_id: params[:problem_id])
+    @rel_user_problem = RelUserProblem.new
   end
 
   def edit; end
 
   def create
     # 2 ways to trigger create method - 1) through web when following user, 2) when seeding
-    if params[:commit] == 'Follow'
-      @problem = Problem.find(params[:problem_id])
-      current_user.probfollow(@problem)
-      redirect_to problems_path
-      flash[:success] = "#{@problem.name} now followed! Edit from My Problems."
-    else
+    # if params[:commit] == 'Follow'
+    #   @problem = Problem.find(params[:problem_id])
+    #   current_user.probfollow(@problem)
+    #   redirect_to problems_path
+    #   flash[:success] = "#{@problem.name} now followed! Edit from My Problems."
+    # else
       @rel_user_problem = RelUserProblem.new(rel_params)
       if @rel_user_problem.save
-        redirect_to rel_user_problems_path
-        flash[:success] = 'New Problem Followed! Edit from My Problems.'
+        @problem = Problem.find(params[:rel_user_problem][:problem_id])
+        redirect_to problems_path
+        flash[:success] = "#{@problem.name} Tracked"
       else
         render :new
       end
-    end
+    #end
   end
 
   def update
     if @rel_user_problem.update(rel_params)
       redirect_to problems_path
-      flash[:success] = "#{@probname} updated"
+      flash[:success] = "#{@problem.name} Tracking Updated"
     else
       render :edit
     end
@@ -48,7 +50,7 @@ class RelUserProblemsController < ApplicationController
 
   def destroy
     @rel_user_problem.destroy
-    flash[:success] = "#{@probname} no longer followed"
+    flash[:success] = "#{@problem.name} No Longer Tracked"
     redirect_to rel_user_problems_path
   end
 
@@ -57,7 +59,8 @@ class RelUserProblemsController < ApplicationController
   def set_rel
     @rel_user_problem = RelUserProblem.find(params[:id])
     # so name can be included in flash messages
-    @probname = Problem.find_by(id: @rel_user_problem.problem_id).name
+    @problem = Problem.find_by(id: @rel_user_problem.problem_id)
+    # @probname = Problem.find_by(id: @rel_user_problem.problem_id).name
   end
 
   def rel_params

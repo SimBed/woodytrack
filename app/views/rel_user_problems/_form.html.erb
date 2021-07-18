@@ -11,6 +11,9 @@
     </div>
   <% end %>
 
+  <div><%= form.hidden_field :problem_id, :value => @problem.id %></div>
+  <div><%= form.hidden_field :user_id, :value => current_user.id %></div>
+
   <div class="field">
     <%= form.label :suggestedgrade, "My Grade"  %>
     <%= form.select :suggestedgrade,Rails.application.config_for(:climbinginfo)["grades"]%>
@@ -19,7 +22,7 @@
 
   <div class="field">
     <%= form.label :highpoint,'High Point' %>
-    <%= form.text_field :highpoint %>
+    <%= form.select :rating, Rails.application.config_for(:climbinginfo)["holds"] %>
   </div>
 
   <div class="field">

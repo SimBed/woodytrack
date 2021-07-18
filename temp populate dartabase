@@ -8,3 +8,202 @@ values
 ('Mellow Yellow','6c','unchecked',now(),now()),
 ('Age of Pfizer','6c','unchecked',now(),now()),
 ;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('big holds and moves','6c+','U',now(),now()),
+('twerk','6c+','U',now(),now()),
+('Ends OF The Earth','6c+','U',now(),now()),
+('Journey To The Centre OF The Earth','6c+','U',now(),now()),
+('Cut of its jib','6c+','U',now(),now()),
+('No job no bedtime','6c+','U',now(),now()),
+('slopers in disguise','6c+','U',now(),now()),
+('hello to the world!','6c+','U',now(),now()),
+('lets get creative','6c+','U',now(),now()),
+('sushi burn','6c+','U',now(),now()),
+('Lollipop head','6c+','U',now(),now()),
+('ct1','6c+','U',now(),now()),
+('ct4','6c+','U',now(),now()),
+('Crossing Waters','6c+','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('Cookie cutter tension','6c+','U',now(),now()),
+('jugs not drugs','6c+','U',now(),now()),
+('Chain Reaction','6c+','U',now(),now()),
+('trainingpinch','6c+','U',now(),now()),
+('Jades Corker','6c+','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('Z Training','7a','U',now(),now()),
+('EyeRobot','7a','U',now(),now()),
+('Slapstick','7a','U',now(),now()),
+('campus star','7a','U',now(),now()),
+('In the Siiiiide','7a','U',now(),now()),
+('7a benchmark','7a','U',now(),now()),
+('ginger and soy','7a','U',now(),now()),
+('hghj','7a','U',now(),now()),
+('basic_up_hard1','7a','U',now(),now()),
+('G-vaitlynn','7a','U',now(),now()),
+('Holds not used','7a','U',now(),now()),
+('Gravity','7a','U',now(),now()),
+('Heavy Arms','7a','U',now(),now()),
+('street 2','7a','U',now(),now()),
+('getaprenup','7a','U',now(),now()),
+('crux','7a','U',now(),now()),
+('kesh999 and soy','7a','U',now(),now()),
+('hold','7a','U',now(),now()),
+('j\y','7a','U',now(),now()),
+('Piranha','7a','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('harrow comp 2019','7a','U',now(),now()),
+('snakes alive','7a','U',now(),now()),
+('theproblem','7a','U',now(),now()),
+('hard boulder','7a','U',now(),now()),
+('scum','7a','U',now(),now()),
+('shank','7a','U',now(),now()),
+('v''s project','7a','U',now(),now()),
+('ibhj','7a','U',now(),now()),
+('Ali''s Training','7a','U',now(),now()),
+('yuh','7a','U',now(),now()),
+('input','7a','U',now(),now()),
+('Low Five','7a','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('Yorkie''s 11 Move training','7a+','U',now(),now()),
+('joe''s project','7a+','U',now(),now()),
+('Tonga','7a+','U',now(),now()),
+('Max Power','7a+','U',now(),now()),
+('How The Mighty Fall','7a+','U',now(),now()),
+('Lets try this','7a+','U',now(),now()),
+('Zo''s House of disappointment','7a+','U',now(),now()),
+('Crecent Moon','7a+','U',now(),now()),
+('Z Training II','7a+','U',now(),now()),
+('The Good Stuff','7a+','U',now(),now()),
+('crimbo smooth','7a+','U',now(),now()),
+('pinchin fat beef','7a+','U',now(),now()),
+('The lean project (gluten free)','7a+','U',now(),now()),
+('Pursuit of Happyness','7a+','U',now(),now()),
+('Growing Pains','7a+','U',now(),now()),
+('Rollover Beethoven','7a+','U',now(),now()),
+('Short Shorts','7a+','U',now(),now()),
+('Ouch','7a+','U',now(),now()),
+('popsicle','7a+','U',now(),now()),
+('there''s the rub','7a+','U',now(),now()),
+('ur in','7a+','U',now(),now()),
+('fuelled by bananas','7a+','U',now(),now()),
+('on the fly','7a+','U',now(),now()),
+('the life of a shoulder injury','7a+','U',now(),now()),
+('Rest is for the weak','7a+','U',now(),now()),
+('man of the match','7a+','U',now(),now()),
+('redcross','7a+','U',now(),now()),
+('words','7a+','U',now(),now()),
+('beef','7a+','U',now(),now()),
+('climb the','7a+','U',now(),now()),
+('tp1','7a+','U',now(),now()),
+('tp2','7a+','U',now(),now()),
+('tp3','7a+','U',now(),now()),
+('exponential gain','7a+','U',now(),now()),
+('Gravity crusher','7a+','U',now(),now()),
+('Gravity Expansion','7a+','U',now(),now()),
+('dench chili','7a+','U',now(),now()),
+('brick by heavy brick','7a+','U',now(),now()),
+('Strong Wheels','7a+','U',now(),now()),
+('Dench tips','7a+','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('House Work','7a+','U',now(),now()),
+('coroelenduro','7a+','U',now(),now()),
+('jumbo','7a+','U',now(),now()),
+('liga del ment','7a+','U',now(),now()),
+('legolas .less','7a+','U',now(),now()),
+('johnny propro','7a+','U',now(),now()),
+('Z Training IV','7a+','U',now(),now()),
+('A Filthy Little Traverse','7a+','U',now(),now()),
+('Feelin''Peachy','7a+','U',now(),now()),
+('Machine Elf','7a+','U',now(),now()),
+('Swiper No Swiping','7a+','U',now(),now()),
+('The Strappado','7a+','U',now(),now()),
+('Rocketman','7a+','U',now(),now()),
+('Carpal Tunnel','7a+','U',now(),now()),
+('Pinch Strafe','7a+','U',now(),now()),
+('pinshez','7a+','U',now(),now()),
+('when in rome','7a+','U',now(),now()),
+('Stiff Upper Lip','7a+','U',now(),now()),
+('Craig Flashed This','7a+','U',now(),now()),
+('Eid Hugs','7a+','U',now(),now()),
+('wet socks','7a+','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('whoops','7b','U',now(),now()),
+('Yorkie''s Linked Boulder','7b','U',now(),now()),
+('Pinch that ting (R side)','7b','U',now(),now()),
+('Mr. Pingy','7b','U',now(),now()),
+('Yorkie''s Linked 2','7b','U',now(),now()),
+('Z Training III','7b','U',now(),now()),
+('Showbiz','7b','U',now(),now()),
+('The Frog','7b','U',now(),now()),
+('7b benchmark','7b','U',now(),now()),
+('soundbyte.7z','7b','U',now(),now()),
+('moon dust','7b','U',now(),now()),
+('noah','7b','U',now(),now()),
+('bring on the squealies','7b','U',now(),now()),
+('maatt daaamon','7b','U',now(),now()),
+('bazza chucks','7b','U',now(),now()),
+('pazza chucks','7b','U',now(),now()),
+('50 Fly and Dive','7b','U',now(),now()),
+('If in doubt campus it out','7b','U',now(),now()),
+('rcp90','7b','U',now(),now()),
+('dtb','7b','U',now(),now()),
+('7','7b','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('over and under','7b','U',now(),now()),
+('#betterthanjohnny','7b','U',now(),now()),
+('crushing is a way of life','7b','U',now(),now()),
+('Higher Ground','7b','U',now(),now()),
+('stab','7b','U',now(),now()),
+('bandersnarch','7b','U',now(),now()),
+('space mountain','7b','U',now(),now()),
+('ligamentless','7b','U',now(),now()),
+('Operation Yewtree','7b','U',now(),now()),
+('Crazy Horse','7b','U',now(),now()),
+('flat','7b','U',now(),now()),
+('if i wanted my come back','7b','U',now(),now()),
+('I would''ve asked your mum','7b','U',now(),now()),
+('anytips?','7b','U',now(),now()),
+('St Peter Says No','7b','U',now(),now()),
+('Contact Strength','7b','U',now(),now()),
+('The Winch','7b','U',now(),now()),
+('Will''s Way','7b','U',now(),now()),
+('louis should work','7b','U',now(),now()),
+('Will''s (harder) Way','7b','U',now(),now()),
+('Pinch Pinch','7b','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('underdog','7b','U',now(),now()),
+('loooonasbloc','7b','U',now(),now()),
+('chikpibicepz','7b','U',now(),now()),
+('New and improved','7b','U',now(),now()),
+('Three-six-o Zo','7b','U',now(),now()),
+('Will''s Lockdown','7b','U',now(),now()),
+('Ramadan Cravings','7b','U',now(),now()),
+('The Maker CD','7b','U',now(),now()),
+('Crypto on edge','7b','U',now(),now())
+;
