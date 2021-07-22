@@ -13,7 +13,7 @@ class ProblemsController < ApplicationController
     @status = %w[not\ tried sent project]
 
     case session[:sort_option]
-    when 'givengrade_asc', 'givengrade_desc', 'name', 'setter'
+    when 'givengrade_asc', 'givengrade_desc', 'name', 'setter', 'random'
       @problems = @problems.send("order_by_#{session[:sort_option]}").paginate(page: params[:page], per_page: 20)
     when 'suggestedgrade_asc'
       @problems = @problems.to_a.sort_by { |p| p.suggestedgrade(current_user) }.paginate(page: params[:page], per_page: 20)

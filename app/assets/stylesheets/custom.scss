@@ -45,6 +45,10 @@ body {
     max-width: 99%;
 }
 
+leaderboard-container {
+  max-width: 90%;
+}
+
 @media (min-width: 992px) {
 	body {
     font-size: 1rem;
@@ -339,7 +343,7 @@ span.picture {
 
  .Problemtable th a {
 	 border-bottom: 1px dashed #999;
-  text-decoration: none
+   text-decoration: none
 }
 
 
@@ -417,6 +421,12 @@ background-image: image-url('down_arrow.gif');
 	font-size: 2.0rem;
 }
 
+.nav-link .home-link {
+  min-width: 2rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .btn {
 	font-size: 1.5rem;
 }
@@ -427,9 +437,11 @@ background-image: image-url('down_arrow.gif');
     padding-right: 15px;
     padding-left: 15px;
   }
+
 .nav li a {
 	font-size: 1.0rem;
 }
+
 .btn {
 	font-size: 1.0rem;
 }
@@ -511,6 +523,16 @@ background-image: image-url('down_arrow.gif');
   font-size: 0.65em;
   text-align: left;
   padding-left: 0.1em;
+}
+
+.c-league-hg {
+  font-size: 0.75em;
+  text-align: left;
+  padding-left: 0.1em;
+  span {
+    font-size: 0.8em;
+    padding-left: 0.6em;
+  }
 }
 
 .c-colheader {
@@ -854,4 +876,36 @@ button.advsearch:focus {
 button i.advsearch_toggler_hide{
   color: $gray-darker;
   opacity: 0.75;
+}
+
+img.whackLogo {
+  display: block;
+  max-width: 30%;
+  margin: auto;
+}
+
+.grade-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+  margin-bottom: 0.4em;
+}
+
+.grade-info-item {
+
+}
+
+.grade-info-item-count {
+  font-size: 0.6em;
+}
+
+.leaderboard {
+    font-size: 1.4em;
+    .leaderboard-tops {
+      font-size: 0.7em;
+    }
+}
+
+.leaderboard-container h2 {
+
 }

@@ -9,15 +9,20 @@ module ApplicationHelper
     end
   end
 
-  def sortable(column:, coltitle: nil, direction: 'asc')
+  def sortable(column:, coltitle: nil, direction: 'asc', apply: true)
     # use a specified column title (if given) or else use the name of the database column given
     coltitle ||= column.titleize
-    # sort_colum and sort_direction are private methods of the controller
-    css_class = column == sort_column ? "current #{sort_direction(direction: direction)}" : 'notcurrent'
-    if column == sort_column && sort_direction(direction: direction) == direction
-      direction = opp_direction(direction)
+    if apply
+      # sort_colum and sort_direction are private methods of the controller
+      css_class = column == sort_column ? "current #{sort_direction(direction: direction)}" : 'notcurrent'
+      if column == sort_column && sort_direction(direction: direction) == direction
+        direction = opp_direction(direction)
+      end
+      link_to coltitle, { sort: column, direction: direction }, { class: css_class, remote: true }
+    else
+      coltitle # on homepage we don't want the sortable functionality
     end
-    link_to coltitle, { sort: column, direction: direction }, { class: css_class, remote: true }
+
   end
 
   def opp_direction(direction)

@@ -5,6 +5,7 @@ class Problem < ApplicationRecord
   scope :order_by_givengrade_desc, -> { order(givengrade: :desc) }
   scope :order_by_name, -> { order(name: :asc) }
   scope :order_by_setter, -> { order(setter: :asc) }
+  scope :order_by_random, -> { order('RANDOM()') }
   validates :name,  presence: true, length: { maximum: 26 },
                     uniqueness: { case_sensitive: false }
 

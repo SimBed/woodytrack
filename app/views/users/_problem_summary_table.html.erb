@@ -1,3 +1,4 @@
+<% if from_where != 'home' %>
 <div class="container px-1 mb-0">
   <div class ="d-flex bg-light sort_header">
       <div class ="cell c-colheader h-problem-name">Grade</div>
@@ -16,3 +17,18 @@
     </div>
   <% end %>
 </div>
+
+<% else %>
+
+<div class="container px-1 mt-3 mb-0">
+  <% @grade.each do |grade| %>
+    <div class ="grade-info">
+      <div class ="grade-info-item">
+        <span class="text-dark grade-info-item-count"><%= Problem.grades(grade).count %> </span>
+        <span class="text-secondary"> <%= grade %> </span>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% end %>

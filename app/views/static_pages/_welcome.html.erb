@@ -1,6 +1,22 @@
 <div class="center jumbotron">
-  <h1>Whack</h1>
+
+  <div class="container center mb-3">
+    <%= image_tag('woody.jpg', class: "whackLogo") %>
+  </div>
+
   <h2>Woody tracking and motivation at Harrowall</h2>
-  
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+
+  <div id="problem_summary_table" class="container stats-container pl-0 pr-0 mt-3 mb-5">
+    <%= render partial: 'users/problem_summary_table', locals: {from_where: 'home'} %>
+  </div>
+
+
+  <div id="league_table" class="container leaderboard-container pl-0 pr-0 mb-3 mx-auto">
+    <h2 class="mt-4 mb-2">Leaderboard</h2>
+    <%= render partial: 'users/league_table', locals: {from_where: 'home', sort_applies: false} %>
+  </div>
+
+<div class="container mt-5">
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-text text-white bg-dark" %>
+</div>
 </div>
