@@ -5,11 +5,12 @@
   </div>
 
   <h2>Woody tracking and motivation at Harrowall</h2>
-
-  <div id="problem_summary_table" class="container stats-container pl-0 pr-0 mt-3 mb-5">
+  <hr>
+  <div id="problem_summary_table" class="container stats-container pl-0 pr-0 mt-3 mb-2">
+    <h2 class="mb-2"><%=Problem.count%> problems</h2>
     <%= render partial: 'users/problem_summary_table', locals: {from_where: 'home'} %>
   </div>
-
+  <hr>
 
   <div id="league_table" class="container leaderboard-container pl-0 pr-0 mb-3 mx-auto">
     <h2 class="mt-4 mb-2">Leaderboard</h2>
