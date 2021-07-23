@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    clear_session(:filter_grade, :filter_status)    
+    clear_session(:filter_grade, :filter_status, :sort_option)
     redirect_to root_url
   end
 
