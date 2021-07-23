@@ -207,3 +207,91 @@ values
 ('The Maker CD','7b','U',now(),now()),
 ('Crypto on edge','7b','U',now(),now())
 ;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('Weightless','7b+','U',now(),now()),
+('Essential Endurance','7b+','U',now(),now()),
+('Span the Tay','7b+','U',now(),now()),
+('house of gin','7b+','U',now(),now()),
+('jack the stripper','7b+','U',now(),now()),
+('The Creature','7b+','U',now(),now()),
+('Flippeur','7b+','U',now(),now()),
+('''max''imum she''nina''gans','7b+','U',now(),now())
+;
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('crimpmas','7b+','U',now(),now()),
+('Darshil''s Warmup','7b+','U',now(),now()),
+('Harrow Scouldren','7b+','U',now(),now()),
+('Out of Depth','7b+','U',now(),now()),
+('tail of spice','7b+','U',now(),now()),
+('ergfg','7b+','U',now(),now()),
+('shealas candyapple','7b+','U',now(),now()),
+('blokfest board','7b+','U',now(),now()),
+('frozen','7b+','U',now(),now()),
+('bw3','7b+','U',now(),now()),
+('the real bored','7b+','U',now(),now()),
+('fly till im high','7b+','U',now(),now()),
+('flickk','7b+','U',now(),now()),
+('cross-over king','7b+','U',now(),now()),
+('#betterthanlaurie','7b+','U',now(),now()),
+('The Power Of Greyskull','7b+','U',now(),now())
+;
+
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('%ihihk','7b+','U',now(),now()),
+('F*ck''n hell Gill','7b+','U',now(),now()),
+('cabbage','7b+','U',now(),now()),
+('amayalate','7b+','U',now(),now());
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('excalibur','7c','U',now(),now()),
+('Twisty swing ting','7c','U',now(),now()),
+('Going up the County','7c','U',now(),now()),
+('Parabola','7c','U',now(),now()),
+('Tawougma','7c','U',now(),now()),
+('Second Heartbeat','7c','U',now(),now()),
+('Up & Up','7c','U',now(),now()),
+('Otherside','7c','U',now(),now()),
+('Fly Away','7c','U',now(),now()),
+('Wake me up','7c','U',now(),now()),
+('break of dawn','7c','U',now(),now()),
+('Rooster','7c','U',now(),now()),
+('Real Lego Hands','7c','U',now(),now()),
+('Soulchild','7c','U',now(),now()),
+('nathansPower','7c','U',now(),now()),
+('Filipa','7c','U',now(),now()),
+('Tall Dimension','7c','U',now(),now()),
+('cops','7c','U',now(),now()),
+('big man moves','7c','U',now(),now()),
+('Layback King','7c','U',now(),now()),
+('life','7c','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('bw1','7c','U',now(),now()),
+('First signs of demensia','7c','U',now(),now()),
+('bens return','7c','U',now(),now()),
+('Expand','7c','U',now(),now()),
+('Wills Wonka','7c','U',now(),now()),
+('Yeet','7c','U',now(),now()),
+('dank memes 4 life','7c','U',now(),now()),
+('pinches and shackles','7c','U',now(),now()),
+('Tension Seeker','7c','U',now(),now()),
+('scottish bollxcks','7c','U',now(),now()),
+('Simple Simon','7c','U',now(),now()),
+('waddage','7c','U',now(),now()),
+('Gok Wang','7c','U',now(),now()),
+('blokfest','7c','U',now(),now()),
+('bard','7c','U',now(),now()),
+('Simplicity','7c','U',now(),now()),
+('filthy','7c','U',now(),now()),
+('cops','7c','U',now(),now()),
+('cosmoss','7c','U',now(),now()),
+('cossmoss','7c','U',now(),now())
+;

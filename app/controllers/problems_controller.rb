@@ -14,15 +14,15 @@ class ProblemsController < ApplicationController
 
     case session[:sort_option]
     when 'givengrade_asc', 'givengrade_desc', 'name', 'setter', 'random'
-      @problems = @problems.send("order_by_#{session[:sort_option]}").paginate(page: params[:page], per_page: 20)
+      @problems = @problems.send("order_by_#{session[:sort_option]}").paginate(page: params[:page], per_page: 30)
     when 'suggestedgrade_asc'
-      @problems = @problems.to_a.sort_by { |p| p.suggestedgrade(current_user) }.paginate(page: params[:page], per_page: 20)
+      @problems = @problems.to_a.sort_by { |p| p.suggestedgrade(current_user) }.paginate(page: params[:page], per_page: 30)
     when 'suggestedgrade_desc'
-      @problems = @problems.to_a.sort_by { |p| p.suggestedgrade(current_user) }.reverse!.paginate(page: params[:page], per_page: 20)
+      @problems = @problems.to_a.sort_by { |p| p.suggestedgrade(current_user) }.reverse!.paginate(page: params[:page], per_page: 30)
     when 'status_asc'
-      @problems = @problems.to_a.sort_by { |p| p.status(current_user) }.paginate(page: params[:page], per_page: 20)
+      @problems = @problems.to_a.sort_by { |p| p.status(current_user) }.paginate(page: params[:page], per_page: 30)
     when 'status_desc'
-      @problems = @problems.to_a.sort_by { |p| p.status(current_user) }.reverse!.paginate(page: params[:page], per_page: 20)
+      @problems = @problems.to_a.sort_by { |p| p.status(current_user) }.reverse!.paginate(page: params[:page], per_page: 30)
     end
 
 #givengrade_asc

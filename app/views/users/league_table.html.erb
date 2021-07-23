@@ -9,7 +9,7 @@
 
 <div id="leagueSummary" class="Studio_Use_Group Rehearse tabcontent">
   <div id="league_table" class="container stats-container pl-0 pr-0 mb-3">
-    <%= render partial: 'league_table', locals: {sort_applies: true} %>
+    <%= render partial: 'league_table', locals: {from_where: 'not_home', sort_applies: true} %>
   </div>
   <ul class="forMobile listgroup-table pl-0">
 	  <li class="listitem-table"><div class="Grey Circle"></div> HG = Highest Grade (tops at grade)</li>
@@ -19,7 +19,7 @@
 
 <div id="problemSummary" class="Studio_Use_Group Rehearse tabcontent">
   <div id="problem_summary_table" class="container stats-container pl-0 pr-0 mb-3">
-    <%= render partial: 'problem_summary_table' %>
+    <%= render partial: 'problem_summary_table', locals: {from_where: 'not_home'} %>
   </div>
 </div>
 
