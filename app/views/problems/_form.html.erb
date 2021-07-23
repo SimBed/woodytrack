@@ -19,7 +19,7 @@
   <div class="field">
     <%= form.label :givengrade, "Setter's Grade" %>
     <!--see config/climbinginfo.yml-->
-    <%= form.select :givengrade, Rails.application.config_for(:climbinginfo)["grades"]%>
+    <%= form.select :givengrade, Rails.application.config_for(:climbinginfo)["grades"] %>
     <%#= form.text_field :givengrade %>
   </div>
 
@@ -27,7 +27,7 @@
     <%= form.label :setter, "Set by" %>
     <%= form.text_field :setter %>
   </div>
-  
+
   <div class="actions">
     <%= form.submit %>
   </div>

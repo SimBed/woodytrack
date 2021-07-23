@@ -1,5 +1,6 @@
 <h2><%=@problem.name%>, <%=@problem.givengrade%> </h2>
 
-<%= render 'form', rel_user_problem: @rel_user_problem %>
-
-<%= link_to 'Back', problems_path %>
+<div class="container">
+  <%= render 'form', rel_user_problem: @rel_user_problem %>
+  <%= link_to 'Back', problems_path %>
+</div>

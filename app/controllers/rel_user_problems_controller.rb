@@ -13,8 +13,6 @@ class RelUserProblemsController < ApplicationController
 
   def new
     @problem = Problem.find(params[:problem_id])
-    #current_user.probfollow(@problem)
-    #@rel_user_problem = RelUserProblem.find_by(user_id: current_user.id, problem_id: params[:problem_id])
     @rel_user_problem = RelUserProblem.new
   end
 

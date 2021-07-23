@@ -2,7 +2,6 @@
   <% if rel_user_problem.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(rel_user_problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
-
       <ul>
       <% rel_user_problem.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -16,7 +15,7 @@
 
   <div class="field">
     <%= form.label :suggestedgrade, "My Grade"  %>
-    <%= form.select :suggestedgrade,Rails.application.config_for(:climbinginfo)["grades"]%>
+    <%= form.select :suggestedgrade,Rails.application.config_for(:climbinginfo)["grades"], selected: rel_user_problem.new_record? ? @problem.givengrade: rel_user_problem.suggestedgrade  %>
     <!--%= form.text_field :suggestedgrade %-->
   </div>
 
@@ -26,23 +25,23 @@
   </div>
 
   <div class="field">
-    <%= form.label :dohp, 'Date High Point First Achieved' %>
-    <%= form.date_field :dohp %>
+    <%= form.label :dohp, 'Date of High Point' %>
+    <%= form.date_field :dohp, value: rel_user_problem.new_record? ? Date.today() : rel_user_problem.dohp %>
   </div>
 
   <div class="field">
-    <%= form.label :firsttry, 'Date of First Attempt' %>
-    <%= form.date_field :firsttry %>
+    <%= form.label :firsttry, 'Date of First Try' %>
+    <%= form.date_field :firsttry, value: rel_user_problem.new_record? ? Date.today() : rel_user_problem.firsttry  %>
   </div>
 
   <div class="field">
-    <%= form.label :rating, "Rating (0-3 star)" %>
-    <%= form.select :rating, Rails.application.config_for(:climbinginfo)["ratings"] %>
+    <%= form.label :rating, "Star Rating" %>
+    <%= form.select :rating, Rails.application.config_for(:climbinginfo)["ratings"], selected: rel_user_problem.new_record? ? 1 : rel_user_problem.rating %>
   </div>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_field :comment %>
+    <div class="field">
+    <%= form.text_area :comment, class: "full_width", placeholder: "Add your comment..." if rel_user_problem.new_record? %>
+    <%= form.text_area :comment, class: "full_width" unless rel_user_problem.new_record? %>
   </div>
 
   <div class="actions">
