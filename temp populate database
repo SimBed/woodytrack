@@ -295,3 +295,135 @@ values
 ('cosmoss','7c','U',now(),now()),
 ('cossmoss','7c','U',now(),now())
 ;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('orange','7c+','U',now(),now()),
+('Cologne Gastone','7c+','U',now(),now()),
+('Bound for the Floor','7c+','U',now(),now()),
+('The Lobster','7c+','U',now(),now()),
+('Albatross','7c+','U',now(),now()),
+('Thunderstruck','7c+','U',now(),now()),
+('Walking the Line','7c+','U',now(),now()),
+('Justice for All','7c+','U',now(),now()),
+('Live Fun Die Young','7c+','U',now(),now()),
+('Yusa''eel','7c+','U',now(),now()),
+('break of dawn','7c+','U',now(),now()),
+('Rappahannock','7c+','U',now(),now()),
+('Life of Illusion','7c+','U',now(),now()),
+('Safari Inn','7c+','U',now(),now()),
+('Whitewash','7c+','U',now(),now()),
+('crossroads','7c+','U',now(),now()),
+('Fade to Wood','7c+','U',now(),now()),
+('Go with the Flow','7c+','U',now(),now()),
+('anon','7c+','U',now(),now()),
+('blurry','7c+','U',now(),now()),
+('Duncy','7c+','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('Time for Gains','7c+','U',now(),now()),
+('Disposable nRG','7c+','U',now(),now()),
+('best of you','7c+','U',now(),now()),
+('Runnin'' down a Dream','7c+','U',now(),now()),
+('Lionheart','7c+','U',now(),now()),
+('Awake','7c+','U',now(),now()),
+('LED','7c+','U',now(),now()),
+('State','7c+','U',now(),now()),
+('El condor Pasa','7c+','U',now(),now()),
+('Element','7c+','U',now(),now()),
+('break of dawn','7c+','U',now(),now()),
+('Hour of Power','7c+','U',now(),now()),
+('crimporama','7c+','U',now(),now()),
+('Shoulders are Frozen','7c+','U',now(),now()),
+('Trapped under Ice','7c+','U',now(),now()),
+('xhibition','7c+','U',now(),now()),
+('climb walk','7c+','U',now(),now()),
+('Geothermal','7c+','U',now(),now()),
+('Punch out','7c+','U',now(),now()),
+('Alpha beta z','7c+','U',now(),now()),
+('Rail','7c+','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('Pinchsion','7c+','U',now(),now()),
+('basics','7c+','U',now(),now()),
+('jestpiece','7c+','U',now(),now()),
+('no-anon','7c+','U',now(),now()),
+('UnFazed','7c+','U',now(),now()),
+('fyfes first bloc','7c+','U',now(),now()),
+('Ladderting','7c+','U',now(),now()),
+('i should be working','7c+','U',now(),now()),
+('Fzls Way','7c+','U',now(),now()),
+('Zoned Out','7c+','U',now(),now()),
+('Coronatined','7c+','U',now(),now()),
+('Demon Flip','7c+','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('What Biceps?','8a','U',now(),now()),
+('Thumbs Up For Life','8a','U',now(),now()),
+('Mugatu','8a','U',now(),now()),
+('The ''Balaaance''','8a','U',now(),now()),
+('Excessive Force','8a','U',now(),now()),
+('Dreams','8a','U',now(),now()),
+('Alt-Shift','8a','U',now(),now()),
+('Swift Style','8a','U',now(),now()),
+('Parkinson''s Revenge','8a','U',now(),now()),
+('@ 8a','8a','U',now(),now()),
+('Force of nature','8a','U',now(),now()),
+('Font','8a','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('Deleted','8a','U',now(),now()),
+('Resolve','8a','U',now(),now()),
+('Radiant Youth','8a','U',now(),now()),
+('nathans ladder','8a','U',now(),now()),
+('Apefoo','8a','U',now(),now()),
+('happy','8a','U',now(),now()),
+('Jumper','8a','U',now(),now()),
+('Cosmo','8a','U',now(),now()),
+('miami','8a','U',now(),now()),
+('Lucid Interval','8a','U',now(),now()),
+('Chile','8a','U',now(),now()),
+('Acid Reflex','8a','U',now(),now()),
+('Raging Demon','8a','U',now(),now()),
+('recurring','8a','U',now(),now()),
+('Whale Surprise','8a','U',now(),now()),
+('Deltoid Supreme','8a','U',now(),now()),
+('Chile','8a','U',now(),now()),
+('Acid Reflex','8a','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('nemesis','8a+','U',now(),now()),
+('nails','8a+','U',now(),now()),
+('held back','8a+','U',now(),now()),
+('paris2020 ladder','8a+','U',now(),now()),
+('dual','8a+','U',now(),now()),
+('Supremely Developed','8a+','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('Ice Cube','8b','U',now(),now()),
+('midnight proj','8b','U',now(),now()),
+('TJ''s Testpiece','8b','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('off the wagon','8b+','U',now(),now())
+;
+
+insert into problems(name,givengrade,setter,created_at,updated_at)
+values
+('$gd#fythu','8c+','U',now(),now()),
+('the ht','8c+','U',now(),now())
+;

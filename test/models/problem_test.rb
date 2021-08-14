@@ -15,7 +15,7 @@ class ProblemTest < ActiveSupport::TestCase
   end
 
   test 'name should not be too long' do
-    @problem.name = 'a' * 27
+    @problem.name = 'a' * 41
     assert_not @problem.valid?
   end
 

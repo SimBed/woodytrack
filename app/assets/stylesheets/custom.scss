@@ -489,14 +489,18 @@ background-image: image-url('down_arrow.gif');
   flex: 2.2;
 }
 
-.c-problem-name, .c-league-name {
-  font-size: 0.65em;
+.c-problem-name-set-comment, .c-league-name {
+  font-size: 0.7em;
   text-align: left;
   padding-left: 0.1em;
-  flex-basis: 30%;
+  flex-basis: 41%;
   white-space: nowrap;
   overflow: hidden;
-      text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.c-problem-name {
+
 }
 
 .c-problem-name a, .c-league-name a {
@@ -512,17 +516,12 @@ background-image: image-url('down_arrow.gif');
     }
 }
 
-.c-problem-grade {
-  font-size: 0.65em;
-  text-align: left;
-  padding-left: 0.1em;
-  flex-basis: 11%;
-}
-
 .c-problem-status, .c-league-stat {
   font-size: 0.65em;
   text-align: left;
   padding-left: 0.1em;
+  /*to allow centering of icon*/
+  position: relative;
 }
 
 .c-league-hg {
@@ -563,17 +562,20 @@ background-image: image-url('down_arrow.gif');
 .h-problem-status {
 }
 
-
-
 img.climb_icon {
   display: block;
-  width: 1.0rem;
-  height: 1.0rem;
+  width: 1.4rem;
+  height: 1.4rem;
   margin: auto;
+  /*to allow centering of icon*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.c-problem-rating {
-  font-size: 0.8em;
+.c-problem-grade {
+  font-size: 0.9em;
   text-align: left;
   padding-left: 1em;
 }
@@ -582,6 +584,27 @@ img.climb_icon {
   font-size: 0.8em;
   text-align: left;
   padding-left: 1em;
+}
+
+.c-problem-comment {
+  font-size: 0.9em;
+  text-align: left;
+  padding-left: 1em;
+  white-space: initial;
+  overflow: initial;
+  text-overflow: initial;
+}
+
+span.givengrade {
+  font-size: 1.1em;
+}
+
+span.suggestedgrade, span.averagegrade {
+  font-size: 0.85em;
+}
+
+span.rating {
+  font-size: 1em;
 }
 
 /* Style the tab */
