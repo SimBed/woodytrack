@@ -9,10 +9,10 @@
   </div>
   <% @grade.each do |grade| %>
     <div class ="d-flex bg-light">
-        <div class ="cell c-problem-name"><%= grade %></div>
-        <div class ="cell c-problem-grade"><%= Problem.grades(grade).count %></div>
+        <div class ="cell problem-summary-grade"><%= grade %></div>
+        <div class ="cell problem-summary-count"><%= Problem.grades(grade).count %></div>
         <% if current_user %>
-         <div class ="cell c-problem-status"><%= Problem.grades(grade).map { |p| p.sent?(current_user) }.count(true) %></div>
+         <div class ="cell problem-summary-status"><%= Problem.grades(grade).map { |p| p.sent?(current_user) }.count(true) %></div>
         <% end %>
     </div>
   <% end %>
