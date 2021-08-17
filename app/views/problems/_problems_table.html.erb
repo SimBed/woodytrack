@@ -23,7 +23,7 @@
 <% averagegrade = " / ".concat(problem.averagegrade.to_s) if problem.averagegrade%>
 <% suggestedgrade = " / ".concat(problem.rel(current_user)&.suggestedgrade.to_s) if current_user && problem.rel(current_user) %>
 <% rating = " / ".concat(problem.rel(current_user)&.rating&.to_s)&.concat('*') if current_user && problem.rel(current_user) %>
-<% highpoint = " / ".concat(problem.rel(current_user)&.highpoint&.to_s) if current_user && problem.rel(current_user) && problem.rel(current_user)&.highpoint != 'top' %>
+<% highpoint = " / ".concat(problem.rel(current_user)&.highpoint.to_s) if current_user && problem.rel(current_user) && problem.rel(current_user)&.highpoint != 'top' %>
 
   <div class ="d-flex bg-light">
       <div class ="cell c-problem-name-set-comment">
