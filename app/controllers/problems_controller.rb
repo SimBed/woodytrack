@@ -46,6 +46,7 @@ class ProblemsController < ApplicationController
   def show
     @problems = Problem.all.map { |p| [p.name, p.id, { 'data-showurl' => problem_url(p.id) }] }
     @rel_user_problem = RelUserProblem.find_by(user_id: current_user.id, problem_id: params[:id])
+    @rel_user_problems = RelUserProblem.where(problem_id: params[:id])
   end
 
   # GET /problems/1/edit

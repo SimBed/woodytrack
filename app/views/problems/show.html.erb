@@ -5,8 +5,28 @@
   </select>
 </div>
 
+<div class="d-flex navigation">
+  <%= link_to 'Back', problems_path, {class: 'back'} %>
+  <div class="icons">
+    <% if @rel_user_problem %>
+      <%= link_to image_tag('climber.png', class: "climb_icon"), edit_rel_user_problem_path(@rel_user_problem) %>
+    <% end %>
+    <% if current_user && current_user.admin? %>
+    <span>  <%= link_to image_tag('edit.png', class: "climb_icon"), edit_problem_path(@problem) %></span>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
 <div class ="container pl-0 pr-0 mb-3">
   <div class ="container px-1">
+    <div class ="d-flex bg-light">
+      <div class ="cell c-rowheader">Set By</div>
+      <div class ="cell c-detail"><%= @problem.setter %></div>
+    </div>
     <div class ="d-flex bg-light">
       <div class ="cell c-rowheader">Setter's Grade</div>
       <div class ="cell c-detail"><%= @problem.givengrade %></div>
@@ -14,10 +34,6 @@
     <div class ="d-flex bg-light">
       <div class ="cell c-rowheader">Average Grade</div>
       <div class ="cell c-detail"><%= @problem.averagegrade %></div>
-    </div>
-    <div class ="d-flex bg-light">
-      <div class ="cell c-rowheader">Set By</div>
-      <div class ="cell c-detail"><%= @problem.setter %></div>
     </div>
     <% if !@rel_user_problem.nil? %>
     <div class ="d-flex bg-light">
@@ -29,7 +45,7 @@
       <div class ="cell c-detail"><%= @rel_user_problem&.highpoint || 'n/a' %></div>
     </div>
     <div class ="d-flex bg-light">
-      <div class ="cell c-rowheader">Date High Point First Achieved</div>
+      <div class ="cell c-rowheader">Date of High Point</div>
       <div class ="cell c-detail"><%= @rel_user_problem&.dohp || 'n/a' %></div>
     </div>
     <div class ="d-flex bg-light">
@@ -45,19 +61,17 @@
       <div class ="cell c-detail"><%= @rel_user_problem&.comment || 'n/a' %></div>
     </div>
     <% end %>
-
   </div>
 </div>
 
-<% if !@rel_user_problem.nil? %>
-  <div><%= link_to 'Edit My Climb', edit_rel_user_problem_path(@rel_user_problem), {class: 'new'} %></div>
-<% end %>
-
-<% if current_user && current_user.admin? %>
-  <div><%= link_to 'Edit Problem', edit_problem_path(@problem), {class: 'new'} %></div>
-<% end %>
-
-<div><%= link_to 'Back', problems_path, {class: 'new'} %></div>
+<div class = "container mt-3 other-climbers">
+  <h4>Climbed By</h4>
+  <% if @rel_user_problems.any? %>
+    <ol>
+      <%= render @rel_user_problems %>
+    </ol>
+  <% end %>
+</div>
 
 <script>
 	var userSelection = document.getElementById("show_pages");

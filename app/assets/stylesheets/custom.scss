@@ -233,7 +233,7 @@ aside {
 input, textarea, .uneditable-input {
   border: 1px solid #bbb;
   /* width: 100%; */
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   @include box_sizing;
 }
 
@@ -592,8 +592,8 @@ background-image: image-url('down_arrow.gif');
 .h-problem-status {
 }
 
-img.climb_icon {
-  display: block;
+.c-problem-status img.climb_icon {
+/*  display: block; */
   width: 1.4rem;
   height: 1.4rem;
   margin: auto;
@@ -973,4 +973,126 @@ textarea.full_width {
 
 input {
   margin-bottom: 0;
+}
+
+.other-climbers h4 {
+  background-color: #f8f9fa;
+  color: #126774;
+  padding-top: .4em;
+  padding-left: .4em;
+}
+
+.other-climbers ol {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user a {
+    text-decoration: none;
+    padding-top: 0;
+    color: #126774;
+    border-radius: 1rem;
+    line-height: 1.25;
+    padding: 0.1rem 0.5rem;
+    box-shadow: 0 1px #999;
+    text-decoration: none;
+    color: black;
+  }
+  .tops {
+    padding-left: 0.5em;
+    padding-top:0.1em;
+    font-size: 0.8em;
+    color: $gray-light;
+  }
+  .highpoint {
+    margin-right: 1.0rem;
+    font-size: 0.8em;
+    margin-top: 0.5rem;
+    }
+
+  .suggestedgrade {
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+  }
+  .comment {
+    display: block;
+    padding-left: 0.5rem;
+    padding-top: 0.2rem;
+    &:before, &:after {
+      content: "\0022";
+    }
+    font-style: italic;
+    font-size: 0.9em;
+  }
+
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: auto;
+    margin-right: 0.5em;
+    font-size: 0.9em;
+  }
+  img.climb_icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-top: 0.5rem;
+    margin-left: auto;
+    margin-right: 0.3em;
+  }
+}
+
+div.gradecircle {
+  @extend %circle;
+  width:40px;  font-weight: bolder;
+  text-align:center;
+  height:40px;
+  font-size:16px;
+    &::first-line{
+      line-height:40px;
+    }
+  color: #454a5d;
+  background-color: $gray-medium-light;
+  margin-right: 0.5rem;
+}
+
+div.ratingcircle {
+  @extend %circle;
+  width:30px;  font-weight: bolder;
+  text-align:center;
+  height:30px;
+  font-size:12px;
+    &::first-line{
+      line-height:30px;
+    }
+  color: #454a5d;
+  background-color: $gray-medium-light;
+  margin-top: 0.2rem;
+}
+
+.icons img.climb_icon {
+  width: 1.4rem;
+  height: 1.4rem;
+margin-right: 0.5rem;
+}
+
+a.back {
+  text-decoration: none;
+  color: #126774;
+  &:hover {
+    color: #126774;
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+}
+
+div.navigation {
+margin-left: 1rem;
+margin-right: 1rem;
+margin-bottom: 0.5rem;
+  .icons {
+  margin-left: auto;
+  margin-right: 0.3em;
+  }
 }
