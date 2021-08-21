@@ -5,20 +5,42 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+        <%= render 'shared/user_stats_summary' %>
       </h1>
     </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
   </aside>
-  <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
-  </div>
+
+</div>
+<div class="px-1 mt-4 mr-2">
+  <%#= render partial: 'problem_summary_user', locals: {from_where: 'not_home'} %>
+  <%= render partial: 'problem_summary_user', locals: {from_where: 'user_show'} %>
+</div>
+
+<div class="container mt-3 problems-climbed">
+  <h4>Problems Climbed</h4>
+  <% if @rel_user_problems.any? %>
+    <ol>
+      <% @rel_user_problems.each do |rel_user_problem| %>
+        <li id="rel_user_problem-<%= rel_user_problem.id %>">
+          <div class="user d-flex mb-2">
+            <%= link_to rel_user_problem.problem.name, rel_user_problem.problem %>
+            <span class="timestamp"><%= time_ago_in_words(rel_user_problem.created_at) %> ago.</span>
+          </div>
+          <div class="d-flex">
+            <div class="gradecircle">
+            <%= rel_user_problem.suggestedgrade %>
+            </div>
+            <div class="ratingcircle">
+            <%= rel_user_problem.rating %>*
+            </div>
+            <%= image_tag(status_icon(rel_user_problem.problem.status(rel_user_problem.user)), class: "climb_icon") %>
+            <span class="highpoint"><%= rel_user_problem.highpoint unless rel_user_problem.highpoint == 'top' %></span>
+          </div>
+          <% if !rel_user_problem.comment.blank? %>
+            <div class="comment"><%= rel_user_problem.comment %></div>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
 </div>

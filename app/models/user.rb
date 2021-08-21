@@ -166,6 +166,13 @@ class User < ApplicationRecord
     rel_user_problems.where(highpoint: 'top').count
   end
 
+  def position
+    return nil if problems.empty?
+    users = User.where(activated: true).joins(:rel_user_problems).distinct
+    users_by_points = users.to_a.sort_by { |u| -u.whack_points }
+    users_by_points.index(self) + 1
+  end
+
   private
 
   # Converts email to all lower-case.

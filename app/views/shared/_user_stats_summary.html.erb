@@ -1,0 +1,7 @@
+<div class="user_stats">
+  <% highest_grade = @user.highest_grade_topped %>
+      <div class ="position"><%= @user.position %></div>
+      <div class ="tops"><%= @user.topouts %></div>
+      <div class ="highgrade"><%= highest_grade %><span><%= " x".concat(@user.sends_at_grade(highest_grade).to_s) unless highest_grade.nil? %></span></div>
+      <div class ="points"><%= @user.whack_points %></div>
+</div>

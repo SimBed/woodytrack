@@ -8,7 +8,8 @@
   <hr>
   <div id="problem_summary_table" class="container stats-container pl-0 pr-0 mt-3 mb-2">
     <h2 class="mb-2"><%=Problem.count%> problems</h2>
-    <%= render partial: 'users/problem_summary_table', locals: {from_where: 'home'} %>
+    <%#= render partial: 'users/problem_summary_table', locals: {from_where: 'home'} %>
+    <%= render partial: 'users/problem_summary_home' %>
   </div>
   <hr>
 

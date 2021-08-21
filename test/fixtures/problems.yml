@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  setter: MyString
-  givengrade: MyString
+babycakes:
+  name: Babycakes
+  setter: cruxy
+  givengrade: 6a
 
-two:
-  name: MyString
-  setter: MyString
-  givengrade: MyString
+soberingsundaes:
+  name: Sobering Sundaes
+  setter: unknown
+  givengrade: 7a

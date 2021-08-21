@@ -2,11 +2,9 @@
   <div class="user d-flex">
     <%= link_to rel_user_problem.user.name, rel_user_problem.user %>
     <span class="timestamp"><%= time_ago_in_words(rel_user_problem.created_at) %> ago.</span>
-
   </div>
   <div class="tops mb-2">
   <%= rel_user_problem.user.topouts %> tops
-
   </div>
   <div class="d-flex">
     <div class="gradecircle">
@@ -21,5 +19,4 @@
   <% if !rel_user_problem.comment.blank? %>
   <div class="comment"><%= rel_user_problem.comment %></div>
   <% end %>
-
 </li>

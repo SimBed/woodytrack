@@ -9,7 +9,7 @@
       <% end %>
     </li>
 
-    <% if current_user && current_user.admin? %>
+    <% if current_user %>
       <li class="nav-item">
         <%= link_to users_path, class: "nav-link" do %>
           <i class="fa fa-users"></i>
