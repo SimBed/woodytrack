@@ -7,14 +7,14 @@
       <% end %>
   </div>
   <% @grade.each do |grade| %>
-  <% grade_climbed_count = Problem.grades(grade).count %>
+  <% grade_count = Problem.grades(grade).count %>
     <div class ="d-flex bg-light">
         <div class ="cell problem-summary-grade"><%= grade %></div>
-        <div class ="cell problem-summary-count"><%= grade_climbed_count %></div>
+        <div class ="cell problem-summary-count"><%= grade_count %></div>
         <% if current_user %>
-        <% grade_climbed = Problem.grades(grade).map { |p| p.sent?(current_user) }.count(true) %>
+        <% grade_climbed = Problem.grades(grade).map { |p| p.sent?(@user) }.count(true) %>
          <div class ="cell problem-summary-climbed"><%= grade_climbed %></div>
-         <div class ="cell problem-summary-climbed"><%= number_to_percentage(grade_climbed.to_f / grade_climbed_count * 100, precision: 0) %></div>
+         <div class ="cell problem-summary-climbed"><%= number_to_percentage(grade_climbed.to_f / grade_count * 100, precision: 0) %></div>
         <% end %>
     </div>
   <% end %>
