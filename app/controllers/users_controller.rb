@@ -80,6 +80,7 @@ class UsersController < ApplicationController
     end
 
     @grade = Problem.distinct.pluck(:givengrade).sort!
+    @user = current_user
 
     ajax_respond
   end
