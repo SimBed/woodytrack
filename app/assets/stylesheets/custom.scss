@@ -565,16 +565,26 @@ background-image: image-url('down_arrow.gif');
 .h-problem-status {
 }
 
-.c-problem-status img.climb_icon {
+%icons {
 /*  display: block; */
-  width: 1.4rem;
-  height: 1.4rem;
   margin: auto;
   /*to allow centering of icon*/
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.c-problem-status img.climb_icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  @extend %icons;
+}
+
+.c-problem-status img.button_icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  @extend %icons;
 }
 
 .c-problem-grade {
@@ -1047,7 +1057,7 @@ div.ratingcircle {
 .icons img.climb_icon {
   width: 1.4rem;
   height: 1.4rem;
-margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 a.back {

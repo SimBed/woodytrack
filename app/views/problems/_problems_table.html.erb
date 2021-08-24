@@ -46,9 +46,9 @@
       <% end %>
       <% if current_user %>
         <%if problem.rel(current_user).nil? %>
-          <div class ="cell c-problem-status"><%= link_to image_tag('climbing-shoes.png', class: "climb_icon"), new_rel_user_problem_path(:problem_id => problem.id) %></div>
+          <div class ="cell c-problem-status"><%= link_to image_tag('add.png', class: "button_icon"), new_rel_user_problem_path(:problem_id => problem.id) %></div>
         <% else %>
-          <div class ="cell c-problem-status"><%= link_to image_tag('climber.png', class: "climb_icon"), edit_rel_user_problem_path(problem.rel(current_user)) %></div>
+          <div class ="cell c-problem-status"><%= link_to image_tag('edit.png', class: "button_icon"), edit_rel_user_problem_path(problem.rel(current_user)) %></div>
         <% end %>
       <% end %>
       <% if current_user && current_user.admin? %>

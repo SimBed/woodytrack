@@ -14,7 +14,7 @@ class Problem < ApplicationRecord
   end
 
   def status(user)
-    return 'not tried' if rel_user_problems.find_by(user_id: user.id).nil?
+    return 'untried' if rel_user_problems.find_by(user_id: user.id).nil?
     return 'sent' if rel_user_problems.find_by(user_id: user.id).highpoint == 'top'
 
     'project'
