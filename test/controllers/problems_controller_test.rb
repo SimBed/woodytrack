@@ -32,7 +32,7 @@ class ProblemsControllerTest < ActionDispatch::IntegrationTest
   test 'should redirect create when not logged in as admin' do
     log_in_as(@amala)
     assert_no_difference 'Problem.count' do
-      post problems_path, params: {problem: { name: 'test_problem', givengrade: '6a'} }
+      post problems_path, params: { problem: { name: 'test_problem', givengrade: '6a' } }
     end
     assert_redirected_to root_url
   end
@@ -40,7 +40,7 @@ class ProblemsControllerTest < ActionDispatch::IntegrationTest
   test 'should redirect update when not logged in as admin' do
     log_in_as(@amala)
     patch problem_path(@babycakes), params: { problem: { name: @babycakes.name,
-                                              givengrade: @babycakes.givengrade } }
+                                                         givengrade: @babycakes.givengrade } }
     assert_redirected_to root_url
   end
 
@@ -51,5 +51,4 @@ class ProblemsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
-
 end

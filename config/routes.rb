@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   resources :problems
-  resources :rel_user_problems
+  resources :rel_user_problems,   only: [:new, :create, :edit, :update, :destroy]
 end
