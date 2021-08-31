@@ -1,7 +1,7 @@
 class ProblemsController < ApplicationController
   before_action :initialize_sort, only: :index
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
-  before_action :admin_user,     only: [:new, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:new, :edit, :create, :update, :destroy]
   before_action :logged_in_user, only: [:show]
 
   helper_method :sort_column, :sort_direction
@@ -81,7 +81,7 @@ class ProblemsController < ApplicationController
   end
 
   # clear_session defined in sessions_helper.rb
-  def clear
+  def clear_filters
     clear_session(:filter_grade, :filter_status)
     redirect_to problems_path
   end

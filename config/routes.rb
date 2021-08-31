@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'password_resets/new'
   get 'password_resets/edit'
   root   'static_pages#home'
-  get '/problems/clear', to: 'problems#clear', as: 'clear'
+  get '/problems/clear_filters', to: 'problems#clear_filters', as: 'clear_filters'
   get '/problems/search', to: 'problems#search'
   get    '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   resources :problems
-  resources :rel_user_problems
+  resources :rel_user_problems,   only: [:new, :create, :edit, :update, :destroy]
 end

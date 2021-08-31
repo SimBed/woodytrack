@@ -3,7 +3,9 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(name: 'Example User', email: 'user@example.com',
-                     password: 'foobar', password_confirmation: 'foobar')
+                     password: 'password', password_confirmation: 'password')
+    @amala = users(:amala)
+    @simbed = users(:simbed)
   end
 
   test 'should be valid' do
@@ -21,7 +23,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'name should not be too long' do
-    @user.name = 'a' * 51
+    @user.name = 'a' * 41
     assert_not @user.valid?
   end
 
@@ -76,41 +78,32 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.authenticated?(:remember, '')
   end
 
-  test 'associated microposts should be destroyed' do
-    @user.save
-    @user.microposts.create!(content: 'Lorem ipsum')
-    assert_difference 'Micropost.count', -1 do
-      @user.destroy
+  test 'associated relationships with problems should be destroyed' do
+    assert_difference 'RelUserProblem.count', -3 do
+      @amala.destroy
     end
   end
 
-  test 'should follow and unfollow a user' do
-    michael = users(:michael)
-    archer  = users(:archer)
-    assert_not michael.following?(archer)
-    michael.follow(archer)
-    assert michael.following?(archer)
-    # following? has been defined in the user model (to mean following.include?) so parallels below
-    assert archer.followers.include?(michael)
-    michael.unfollow(archer)
-    assert_not michael.following?(archer)
+  test 'highest_grade_topped method' do
+    assert_equal '7a', @amala.highest_grade_topped
   end
 
-  test 'feed should have the right posts' do
-    michael = users(:michael)
-    archer  = users(:archer)
-    lana    = users(:lana)
-    # Posts from followed user
-    lana.microposts.each do |post_following|
-      assert michael.feed.include?(post_following)
-    end
-    # Posts from self
-    michael.microposts.each do |post_self|
-      assert michael.feed.include?(post_self)
-    end
-    # Posts from unfollowed user
-    archer.microposts.each do |post_unfollowed|
-      assert_not michael.feed.include?(post_unfollowed)
-    end
+  test 'sends_at_grade method' do
+    assert_equal 2, @amala.sends_at_grade('7a')
+    assert_equal 0, @amala.sends_at_grade('6b+')
+  end
+
+  test 'whack_points method' do
+    assert_equal 128, @amala.whack_points
+    assert_equal 1458, @amala.whack_points(3)
+  end
+
+  test 'topouts method' do
+    assert_equal 2, @amala.topouts
+  end
+
+  test 'position method' do
+    assert_equal 1, @amala.position
+    assert_equal 3, @simbed.position
   end
 end

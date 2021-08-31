@@ -2,8 +2,9 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:michael)
-    @other_user = users(:archer)
+    @simbed = users(:simbed)
+    @amala = users(:amala)
+    @aadrak = users(:aadrak)
   end
 
   test 'should get new' do
@@ -17,42 +18,50 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should redirect edit when not logged in' do
-    get edit_user_path(@user)
+    get edit_user_path(@amala)
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test 'should redirect update when not logged in' do
-    patch user_path(@user), params: { user: { name: @user.name,
-                                              email: @user.email } }
+    patch user_path(@amala), params: { user: { name: @amala.name,
+                                               email: 'amala@squeak.com' } }
     assert_not flash.empty?
+    assert_not_equal 'amala@squeak.com', @amala.reload.email
     assert_redirected_to login_url
   end
 
+  test 'should redirect update when logged in as wrong person' do
+    log_in_as(@aadrak)
+    patch user_path(@amala), params: { user: { name: @amala.name,
+                                               email: 'amala@squeak.com' } }
+    assert_not_equal 'amala@squeak.com', @amala.reload.email
+    assert_redirected_to root_url
+  end
+
   test 'should not allow the admin attribute to be edited via the web' do
-    log_in_as(@other_user)
-    assert_not @other_user.admin?
-    patch user_path(@other_user), params: {
+    log_in_as(@amala)
+    assert_not @amala.admin?
+    patch user_path(@amala), params: {
       user: { password: 'password',
               password_confirmation: 'password',
               admin: true }
     }
-    assert_not @other_user.reload.admin?
+    assert_not @amala.reload.admin?
   end
 
   test 'should redirect destroy when not logged in' do
     assert_no_difference 'User.count' do
-      delete user_path(@user)
+      delete user_path(@amala)
     end
     assert_redirected_to login_url
   end
 
   test 'should redirect destroy when logged in as a non-admin' do
-    log_in_as(@other_user)
+    log_in_as(@amala)
     assert_no_difference 'User.count' do
-      delete user_path(@user)
+      delete user_path(@aadrak)
     end
     assert_redirected_to root_url
   end
-
 end

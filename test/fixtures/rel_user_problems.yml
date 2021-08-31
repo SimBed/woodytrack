@@ -1,21 +1,51 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: <%= ActiveRecord::FixtureSet.identify(:michael) %>
+simbedbaby:
+  user_id: <%= ActiveRecord::FixtureSet.identify(:simbed) %>
   problem_id: <%= ActiveRecord::FixtureSet.identify(:babycakes) %>
   suggestedgrade: 6b
+  highpoint: puccio
+  dohp: 2019-10-09
+  firsttry: 2019-10-09
+  rating: 2
+  comment: cool
+
+amalababy:
+  user_id: <%= ActiveRecord::FixtureSet.identify(:amala) %>
+  problem_id: <%= ActiveRecord::FixtureSet.identify(:babycakes) %>
+  suggestedgrade: 6b+
+  highpoint: CR4
+  dohp: 2019-10-09
+  firsttry: 2019-10-09
+  rating: 2
+  comment: miaow
+
+amalasobering:
+  user_id: <%= ActiveRecord::FixtureSet.identify(:amala) %>
+  problem_id: <%= ActiveRecord::FixtureSet.identify(:soberingsundaes) %>
+  suggestedgrade: 6c+
   highpoint: top
   dohp: 2019-10-09
   firsttry: 2019-10-09
-  rating: 1
-  comment: MyText
+  rating: 3
+  comment: good
 
-two:
-  user_id: <%= ActiveRecord::FixtureSet.identify(:archer) %>
-  problem_id: <%= ActiveRecord::FixtureSet.identify(:soberingsundaes) %>
-  suggestedgrade: 8a
-  highpoint: MyString
+amalaexcaliboy:
+  user_id: <%= ActiveRecord::FixtureSet.identify(:amala) %>
+  problem_id: <%= ActiveRecord::FixtureSet.identify(:excaliboy) %>
+  suggestedgrade: 7a+
+  highpoint: top
   dohp: 2019-10-09
   firsttry: 2019-10-09
-  rating: 1
-  comment: MyText
+  rating: 3
+  comment: wild
+
+aadrakbaby:
+  user_id: <%= ActiveRecord::FixtureSet.identify(:aadrak) %>
+  problem_id: <%= ActiveRecord::FixtureSet.identify(:babycakes) %>
+  suggestedgrade: 6a+
+  highpoint: top
+  dohp: 2019-10-09
+  firsttry: 2019-10-09
+  rating: 3
+  comment: v good

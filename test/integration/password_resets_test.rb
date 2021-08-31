@@ -3,10 +3,10 @@ require 'test_helper'
 class PasswordResetsTest < ActionDispatch::IntegrationTest
   def setup
     ActionMailer::Base.deliveries.clear
-    @user = users(:michael)
+    @user = users(:amala)
   end
 
-  test 'password resets' do
+  test 'password resets (email validity)' do
     get new_password_reset_path
     assert_template 'password_resets/new'
     # Invalid email
@@ -20,7 +20,11 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_equal 1, ActionMailer::Base.deliveries.size
     assert_not flash.empty?
     assert_redirected_to root_url
-    # Password reset form
+  end
+
+  test 'password resets (details incorrect)' do
+    post password_resets_path,
+         params: { password_reset: { email: @user.email } }
     user = assigns(:user)
     # Wrong email
     get edit_password_reset_path(user.reset_token, email: '')
@@ -33,6 +37,12 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # Right email, wrong token
     get edit_password_reset_path('wrong token', email: user.email)
     assert_redirected_to root_url
+  end
+
+  test 'password resets (details correct)' do
+    post password_resets_path,
+         params: { password_reset: { email: @user.email } }
+    user = assigns(:user)
     # Right email, right token
     get edit_password_reset_path(user.reset_token, email: user.email)
     assert_template 'password_resets/edit'
