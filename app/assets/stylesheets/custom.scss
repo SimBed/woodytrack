@@ -1036,7 +1036,7 @@ div.gradecircle {
   margin-right: 0.5rem;
 }
 
-div.ratingcircle {
+div.ratingcircle, div.givengrade-circle {
   @extend %circle;
   width:30px;  font-weight: bolder;
   text-align:center;

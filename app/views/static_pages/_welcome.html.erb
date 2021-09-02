@@ -28,31 +28,7 @@
   <% if logged_in? %>
     <div class="container mt-3 activity-feed">
       <h4>Latest Activity</h4>
-      <% if @tops_feed.any? %>
-        <ol>
-          <% @tops_feed.each do |top| %>
-            <li>
-              <div class="user d-flex mb-2">
-                <%= link_to top.user.name,top.user %>
-
-              </div>
-              <div class="user d-flex mb-2">
-                <%= link_to top.problem.name,top.problem %>
-                <%= image_tag('checked.png', class: "climb_icon") %>
-              </div>
-              <div class="d-flex">
-                <div class="gradecircle">
-                <%= top.problem.givengrade %>
-                </div>
-                <div class="ratingcircle">
-                <%= top.suggestedgrade %>*
-                </div>
-                <span class="timestamp"><%= time_ago_in_words(top.updated_at) %> ago.</span>
-              </div>
-            </li>
-          <% end %>
-        </ol>
-      <% end %>
+      <%= render partial: 'shared/activity_feed' %>
     </div>
-<% end %>
+  <% end %>
 </div>
