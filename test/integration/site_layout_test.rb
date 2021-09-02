@@ -13,7 +13,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', problems_path, count: 1
     assert_select 'a[href=?]', league_table_path, count: 1
     # include li to be more specific as link to user may appear in the league table
-    assert_select 'li a[href=?]', user_path(@amala), count: 0
+    assert_select 'li.nav-item a[href=?]', user_path(@amala), count: 0
     assert_select 'a[href=?]', edit_user_path(@amala), count: 0
     assert_select 'a[href=?]', logout_path, count: 0
     assert_select 'a[href=?]', login_path, count: 1
@@ -22,14 +22,15 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
   test 'nav bar links once logged in' do
     log_in_as(@amala)
-    get root_path
     follow_redirect!
     assert_template 'problems/index'
+    get root_path
+    assert_template 'static_pages/home'
     assert_select 'a[href=?]', root_path, count: 1
     assert_select 'a[href=?]', users_path, count: 1
     assert_select 'a[href=?]', problems_path, count: 1
     assert_select 'a[href=?]', league_table_path, count: 1
-    assert_select 'li a[href=?]', user_path(@amala), count: 1
+    assert_select 'li.nav-item a[href=?]', user_path(@amala), count: 1
     assert_select 'a[href=?]', edit_user_path(@amala), count: 1
     assert_select 'a[href=?]', logout_path, count: 1
     assert_select 'a[href=?]', login_path, count: 0

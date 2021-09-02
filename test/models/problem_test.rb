@@ -40,7 +40,7 @@ class ProblemTest < ActiveSupport::TestCase
   test 'status snd sent? method' do
     assert_equal 'sent', @soberingsundaes.status(@amala)
     assert_equal 'project', @babycakes.status(@amala)
-    assert_equal 'not tried', @crossing.status(@amala)
+    assert_equal 'untried', @crossing.status(@amala)
     assert @soberingsundaes.sent?(@amala)
     assert_not @babycakes.sent?(@amala)
     assert_not @crossing.sent?(@amala)
