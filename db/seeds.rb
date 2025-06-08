@@ -130,20 +130,20 @@ RelUserProblem.create!(user_id: 3,
   #users.each { |user| user.microposts.create!(content: content) }
 #end
 
-content = "all my hotpants are in the wash"
-User.find(2).microposts.create!(content: content)
-content = "where did that item from class go?"
-User.find(2).microposts.create!(content: content)
-content = "i think i have a crush on my gym constructor"
-User.find(3).microposts.create!(content: content)
-content = "Why doesn't The Space do memberships?"
-User.find(3).microposts.create!(content: content)
-
-users = User.order(:created_at).drop(3)
-5.times do
-  content = Faker::Lorem.sentence(word_count: 5)
-  users.each { |user| user.microposts.create!(content: content) }
-end
+# content = "all my hotpants are in the wash"
+# User.find(2).microposts.create!(content: content)
+# content = "where did that item from class go?"
+# User.find(2).microposts.create!(content: content)
+# content = "i think i have a crush on my gym constructor"
+# User.find(3).microposts.create!(content: content)
+# content = "Why doesn't The Space do memberships?"
+# User.find(3).microposts.create!(content: content)
+#
+# users = User.order(:created_at).drop(3)
+# 5.times do
+#   content = Faker::Lorem.sentence(word_count: 5)
+#   users.each { |user| user.microposts.create!(content: content) }
+# end
 
 # Following relationships
 #users = User.all

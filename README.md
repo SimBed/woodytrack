@@ -1,5 +1,6 @@
-this app is live at https://woodytrack.herokuapp.com
-if you wish to collaborate to develop Whack further, please contact Dan at woodytrack@gmail.com
+a Rails climbing app for tracking progress on Harrowall's woody board
+
+<img src="public/whack.png" alt="demo image" width="300"><br>
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 

@@ -24,8 +24,8 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   #updated May 2021
-  config.assets.js_compressor = Uglifier.new(harmony: true)
-  #config.assets.js_compressor = :uglifier
+  # config.assets.js_compressor = Uglifier.new(harmony: true)
+  config.assets.js_compressor = :terser
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -91,20 +91,18 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
-
+  # DPS:
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'woodytrack.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host }
+  host = 'wack.simbed.duckdns.org'
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => 'apikey',
-    :password       => ENV['SENDGRID_API_KEY'],
-    :domain         => 'heroku.com',
-    :enable_starttls_auto => true
-  }
+    address:        'smtp.sendgrid.net',
+    port:           '587',
+    authentication: :plain,
+    user_name:      Rails.application.credentials.dig(:sendgrid, :user_name),
+    password:        Rails.application.credentials.dig(:sendgrid, :api_key),
+    domain:         'simbed.duckdns.org',
+    enable_starttls_auto: true
+  } 
 end

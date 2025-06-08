@@ -1,10 +1,15 @@
+# default: &default
+#   adapter: postgresql
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+#   host: localhost
+#   username: postgres
+#   password: password
+
 default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  host: localhost
-  username: postgres
-  password: daniel
 
 development:
   <<: *default
@@ -16,6 +21,6 @@ test:
 
 production:
   <<: *default
-  database: sample_app_production
-  username: sample_app
-  password: <%= ENV['SAMPLE_APP_DATABASE_PASSWORD'] %>
+  database: whack_production
+  username: railsapps
+  password: <%= Rails.application.credentials.dig(:production, :database_password) %>
