@@ -91,17 +91,23 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  # DPS
+  Rails.application.routes.default_url_options = {
+    host: 'whack.simbed.duckdns.org',
+    protocol: 'https'
+  }  
+
   # DPS:
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'wack.simbed.duckdns.org'
+  host = 'whack.simbed.duckdns.org'
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   ActionMailer::Base.smtp_settings = {
-    address:        'smtp.sendgrid.net',
+    address:        'smtp.gmail.com',
     port:           '587',
     authentication: :plain,
-    user_name:      Rails.application.credentials.dig(:sendgrid, :user_name),
-    password:        Rails.application.credentials.dig(:sendgrid, :api_key),
+    user_name:      Rails.application.credentials.dig(:gmail, :user_name),
+    password:        Rails.application.credentials.dig(:gmail, :app_password),
     domain:         'simbed.duckdns.org',
     enable_starttls_auto: true
   } 

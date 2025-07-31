@@ -1,6 +1,37 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {host: 'localhost', port: 3000}
+  #   # DPS: this works for gmail direct (no brevo)
+  ActionMailer::Base.smtp_settings = {
+    address:        'smtp.gmail.com',
+    port:           '587',
+    authentication: 'plain',
+    user_name:      'woodytrackharrow@gmail.com',
+    password:        ENV['WTH_GMAIL_APP_PASSWORD'],
+    domain:         'gmail.com',
+    enable_starttls_auto: true
+  } 
+
+  # DPS: attempt to use Brevo - authentication error
+  # config.action_mailer.smtp_settings = {
+  # address:              'smtp-relay.brevo.com',
+  # port:                 587,
+  # domain:               'gmail.com',
+  # user_name:            'myemail@gmail.com',
+  # password:             'xsmtpsib-....', # Long Brevo SMTP password
+  # authentication:       'login',
+  # enable_starttls_auto: true
+  # }
+
+  # DPS MH 11.22
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :test
+
+  # config.action_mailer.default_url_options = {host: 'localhost', port: 3000, protocol: 'http'}
+
   # DPS so changes are reflected without having to reload public_file_server
   # stackoverflow "server needs restart every time I make changes"
   # issues arose after shift to WSL
@@ -35,14 +66,6 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
-
-  config.action_mailer.raise_delivery_errors = true
-  host = 'https://cf7599b824e24aa09efed3e203ce2b93.vfs.cloud9.eu-west-1.amazonaws.com/'
-  # Don't use this literally; use your local dev host instead
-  # Use this on the cloud IDE.
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
-  # Use this if developing on localhost.
-  # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   config.action_mailer.perform_caching = false
 

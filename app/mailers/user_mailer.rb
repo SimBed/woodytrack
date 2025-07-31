@@ -8,4 +8,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: user.email, subject: 'Whack - Password reset'
   end
+
+  def profile_active
+    mail to: 'woodytrackharrow@gmail.com', subject: 'Whack - Profile Activated Alert'
+  end
+
 end

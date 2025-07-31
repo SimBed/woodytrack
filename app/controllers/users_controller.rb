@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 
   def show
     # @user = User.find(params[:id])
+    UserMailer.profile_active.deliver_now
+    flash[:info] = 'Email alert sent - profile activated'    
     @user = User.find_by(id: params[:id])
     redirect_to root_url and return unless @user && @user.activated
     @grade = Problem.distinct.pluck(:givengrade).sort!
